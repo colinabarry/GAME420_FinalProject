@@ -1,9 +1,9 @@
 extends KinematicBody2D
 class_name Character
 
-export var friction: float = 0.15
-export var acceleration: int = 40
-export var max_speed: int = 100
+var friction: float = 0.15
+var acceleration: int = 40
+var max_speed: int = 100
 
 var move_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO

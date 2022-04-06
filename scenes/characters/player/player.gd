@@ -1,5 +1,9 @@
 extends Character
 
+export onready var player_friction
+export onready var player_acceleration
+export onready var player_max_speed
+
 var input_axis: Vector2 = Vector2.ZERO
 
 
