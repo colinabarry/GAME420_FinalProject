@@ -8,10 +8,12 @@ var input_axis: Vector2 = Vector2.ZERO
 
 
 func _process(_delta: float) -> void:
-    var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+    # var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
+    get_input()
+    move()
+
+
+func get_input() -> void:
     input_axis.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
     input_axis.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
-    
-    
     move_direction = input_axis
-    move()

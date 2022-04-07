@@ -9,7 +9,7 @@ var move_direction: Vector2 = Vector2.ZERO
 var velocity: Vector2 = Vector2.ZERO
 
 
-func _process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	velocity = move_and_slide(velocity)
 	velocity = lerp(velocity, Vector2.ZERO, friction)
 
