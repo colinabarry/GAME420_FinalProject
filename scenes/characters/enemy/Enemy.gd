@@ -4,6 +4,7 @@ extends Character
 var path: PoolVector2Array
 
 var max_steering: float = 2.5
+var rotation_speed: float = .025
 
 onready var navigation: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player")
@@ -24,6 +25,10 @@ func chase() -> void:
 				return
 		move_direction = vector_to_next_point		
 
+func orbit() -> void:
+	var point: Vector2 = player.position
+	velocity = Vector2.ZERO
+	position = point + (position - point).rotated(rotation_speed)
 
 func _on_PathTimer_timeout() -> void:
 	path = navigation.get_simple_path(global_position, player.position)
