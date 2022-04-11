@@ -19,12 +19,15 @@ func _physics_process(_delta: float) -> void:
 	move()
 
 
+# Gets the x and y input_axis from input events and sets move_direction to the resulting value
+# By taking the difference of the "strength" of the events, each axis can be set in a single line
 func get_input() -> void:
 	input_axis.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_axis.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	move_direction = input_axis
 
 
+# Debug function to update player variables that are editable on the Player node
 func update_player_vars() -> void:
 	frame += 1
 	if frame % 60 == 0:
