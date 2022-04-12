@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/characters/medium_enemy/MediumEnemy.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 15.0333
+radius = 50.0
 
 [node name="MediumEnemy" groups=["MediumEnemy"] instance=ExtResource( 1 )]
 collision_mask = 5
@@ -17,4 +17,15 @@ collision_mask = 5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
 shape = SubResource( 1 )
 
+[node name="AttackCooldown" type="Timer" parent="." index="6"]
+wait_time = 5.0
+one_shot = true
+
+[node name="AttackLength" type="Timer" parent="." index="7"]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
+[connection signal="area_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_area_exited"]
+[connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]
+[connection signal="timeout" from="AttackLength" to="." method="_on_AttackLength_timeout"]
