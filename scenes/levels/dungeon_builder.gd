@@ -5,10 +5,10 @@ const SPACING := Vector2(5, 6)
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CARDINALS := ["east", "north", "west", "south"]
 
-const WALL_VAL := 0
-const BACK_WALL_VAL := 1
-const FLOOR_VAL := -1
-const HALL_VAL := -1
+const WALL_VAL := 3
+const BACK_WALL_VAL := 2
+const FLOOR_VAL := 1
+const HALL_VAL := 4
 
 var room_size := Vector2()
 var carved_tiles := []
@@ -46,6 +46,10 @@ func place_room(p_index: int):
 		for x in room_size.x + 2:
 			var new_tile = (top_left_corner - Vector2(1, 2)) + Vector2(x, y)
 			carved_tiles.append({pos = new_tile, val = WALL_VAL})
+
+	for x in room_size.x:
+		var new_tile = top_left_corner + Vector2(x, -1)
+		carved_tiles.append({pos = new_tile, val = BACK_WALL_VAL})
 
 	for y in room_size.y:
 		for x in room_size.x:
