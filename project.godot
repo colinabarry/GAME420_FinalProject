@@ -14,6 +14,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/characters/character/Character.gd"
 }, {
+"base": "Node",
+"class": "DungeonBuilder",
+"language": "GDScript",
+"path": "res://scenes/levels/dungeon_builder.gd"
+}, {
+"base": "Reference",
+"class": "DungeonRoom",
+"language": "GDScript",
+"path": "res://scenes/levels/dungeon_room.gd"
+}, {
 "base": "Character",
 "class": "Enemy",
 "language": "GDScript",
@@ -23,17 +33,25 @@ _global_script_classes=[ {
 "class": "GitAPI",
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "Node",
+"class": "RoomWalker",
+"language": "GDScript",
+"path": "res://scenes/levels/room_walker.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
+"DungeonBuilder": "",
+"DungeonRoom": "",
 "Enemy": "",
-"GitAPI": ""
+"GitAPI": "",
+"RoomWalker": ""
 }
 
 [application]
 
 config/name="Game 420 Final Project"
-run/main_scene="res://scenes/levels/World.tscn"
+run/main_scene="res://scenes/levels/GeneratedRooms.tscn"
 config/icon="res://assets/icon.png"
 
 [display]
