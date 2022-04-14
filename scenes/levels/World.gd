@@ -13,7 +13,7 @@ func _ready() -> void:
 
 
 func generate_level() -> void:
-	var dungeon_builder = DungeonBuilder.new(Vector2(32, 24))
+	var dungeon_builder = DungeonBuilder.new(Vector2(32, 18))
 	var map = dungeon_builder.generate_dungeon_tiles(10)
 	var player = Player.instance()
 
