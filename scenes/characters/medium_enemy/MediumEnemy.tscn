@@ -25,6 +25,17 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
+[node name="LeftCollisionRaycast" type="RayCast2D" parent="." index="8"]
+scale = Vector2( 6, 0.2 )
+enabled = true
+collide_with_areas = true
+
+[node name="RightCollisionRaycast" type="RayCast2D" parent="." index="9"]
+rotation = 3.14159
+scale = Vector2( 6, 0.2 )
+enabled = true
+collide_with_areas = true
+
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
 [connection signal="area_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_area_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]

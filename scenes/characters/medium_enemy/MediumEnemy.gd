@@ -12,6 +12,11 @@ var is_attacking: bool = false
 func _physics_process(_delta) -> void:
 	look_at(player.position)
 
+	if $LeftCollisionRaycast.is_colliding() == true:
+		rotation_speed = -rotation_speed
+	elif $RightCollisionRaycast.is_colliding() == true:
+		rotation_speed = -rotation_speed
+	
 	if is_attacking:
 		if $AttackLength.time_left == 0:
 			$AttackLength.start()
@@ -21,8 +26,9 @@ func _physics_process(_delta) -> void:
 			chase()
 			move()
 		elif (position - player.position).length() <= 49:
-			print((position - player.position).length())
-			move_and_slide((position-player.position).normalized() * max_speed * 3)
+			move_and_slide((position-player.position).normalized() * max_speed * 1)
+			if player_in_attack_range:
+				attack()
 		else:
 			orbit()
 			if player_in_attack_range:

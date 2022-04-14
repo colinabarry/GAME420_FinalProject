@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/characters/player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/RandomLevelGenTileset.png" type="Texture" id=2]
-[ext_resource path="res://scenes/characters/medium_enemy/MediumEnemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/characters/basic_enemy/BasicEnemy.tscn" type="PackedScene" id=4]
 
 [sub_resource type="NavigationPolygon" id=2]
 vertices = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -66,5 +66,5 @@ collision_mask = 1
 player_acceleration = 15
 player_max_speed = 106
 
-[node name="MediumEnemy" parent="." instance=ExtResource( 3 )]
-position = Vector2( 420, 82 )
+[node name="BasicEnemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 239, 69 )
