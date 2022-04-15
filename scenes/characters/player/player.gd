@@ -2,7 +2,7 @@ extends Character
 
 export(float) onready var player_friction: float = 0.15
 export(int) onready var player_acceleration: int = 20
-export(int) onready var player_max_speed: int = 1000
+export(int) onready var player_max_speed: int = 100
 
 var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0

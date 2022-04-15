@@ -543,13 +543,13 @@ script = ExtResource( 1 )
 color = Color( 0, 0.211765, 1, 1 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -46993.0
 margin_top = -35157.0
 margin_right = 3987.0
 margin_bottom = 3555.0
+mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 
 [node name="TileMap" type="TileMap" parent="."]
