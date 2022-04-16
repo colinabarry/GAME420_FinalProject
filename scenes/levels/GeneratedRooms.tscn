@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=58 format=2]
 
 [ext_resource path="res://scenes/levels/World.gd" type="Script" id=1]
@@ -6,6 +7,12 @@
 [ext_resource path="res://assets/back_vall.png" type="Texture" id=4]
 [ext_resource path="res://assets/hallway.png" type="Texture" id=5]
 [ext_resource path="res://scenes/levels/WorldCamera.gd" type="Script" id=6]
+=======
+[gd_scene load_steps=51 format=2]
+
+[ext_resource path="res://scenes/levels/World.gd" type="Script" id=1]
+[ext_resource path="res://assets/TileSet Template.png" type="Texture" id=2]
+>>>>>>> Stashed changes
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -148,6 +155,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 [sub_resource type="ConvexPolygonShape2D" id=48]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
+<<<<<<< Updated upstream
 [sub_resource type="NavigationPolygon" id=49]
 vertices = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
@@ -158,6 +166,8 @@ points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
 [sub_resource type="ConvexPolygonShape2D" id=51]
 points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
+=======
+>>>>>>> Stashed changes
 [sub_resource type="TileSet" id=1]
 0/name = "TileSet Template.png 0"
 0/texture = ExtResource( 2 )
@@ -465,6 +475,7 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
+<<<<<<< Updated upstream
 1/name = "pixil-frame-0_(25).png 1"
 1/texture = ExtResource( 3 )
 1/tex_offset = Vector2( 0, 0 )
@@ -536,10 +547,13 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 4/shape_one_way_margin = 0.0
 4/shapes = [  ]
 4/z_index = 0
+=======
+>>>>>>> Stashed changes
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
 
+<<<<<<< Updated upstream
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0.211765, 1, 1 )
 
@@ -563,3 +577,10 @@ tile_data = PoolIntArray( -24971403, 0, 4, -24971402, 0, 196609, -24971401, 0, 1
 zoom = Vector2( 0.45, 0.45 )
 smoothing_enabled = true
 script = ExtResource( 6 )
+=======
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+tile_set = SubResource( 1 )
+cell_size = Vector2( 8, 8 )
+format = 1
+>>>>>>> Stashed changes
