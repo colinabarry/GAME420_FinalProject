@@ -12,7 +12,7 @@ script = ExtResource( 2 )
 color = Color( 1, 0, 0, 1 )
 
 [node name="PathTimer" type="Timer" parent="." index="3"]
-wait_time = 0.5
+wait_time = 0.25
 autostart = true
 
 [connection signal="timeout" from="PathTimer" to="." method="_on_PathTimer_timeout"]

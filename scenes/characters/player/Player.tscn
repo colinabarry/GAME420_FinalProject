@@ -1,4 +1,6 @@
-[gd_scene load_steps=10 format=2]
+
+[gd_scene load_steps=11 format=2]
+
 
 [ext_resource path="res://scenes/characters/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/player/player.gd" type="Script" id=2]
@@ -16,12 +18,22 @@ resource_name = "light_attack"
 [sub_resource type="Animation" id=3]
 resource_name = "wind_up"
 
-[node name="Player" instance=ExtResource( 1 )]
+[sub_resource type="CircleShape2D" id=1]
+radius = 4.0
+
+[node name="Player" groups=["Player"] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="ColorRect" parent="." index="0"]
 visible = false
 color = Color( 0, 0.439216, 1, 1 )
+
+
+[node name="HurtBox" type="Area2D" parent="." index="4" groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" index="0"]
+modulate = Color( 0.85098, 1, 0, 1 )
+shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
