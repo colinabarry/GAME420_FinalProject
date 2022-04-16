@@ -15,6 +15,7 @@ func _physics_process(_delta: float) -> void:
 		velocity = lerp(velocity, Vector2.ZERO, friction)
 
 
+# Set velocity from move_direction and acceleration
 func move() -> void:
 	move_direction = move_direction.clamped(1)
 	velocity += move_direction * acceleration
