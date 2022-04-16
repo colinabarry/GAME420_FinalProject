@@ -7,16 +7,16 @@ export(int) onready var player_max_speed: int = 100
 var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0
 
-
-func _ready() -> void:
-	update_player_vars()
+# func _ready() -> void:
+# 	update_player_vars()
 
 
 func _physics_process(_delta: float) -> void:
-	# var mouse_direction: Vector2 = (get_global_mouse_position() - global_position).normalized()
 	get_input()
-	update_player_vars()
+	# update_player_vars()
 	move()
+
+	# print(move_direction)
 
 
 # Gets the x and y input_axis from input events and sets move_direction to the resulting value
@@ -26,6 +26,7 @@ func get_input() -> void:
 	input_axis.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	move_direction = input_axis
 
+<<<<<<< Updated upstream
 
 # Debug function to update player variables that are editable on the Player node
 func update_player_vars() -> void:
@@ -35,3 +36,12 @@ func update_player_vars() -> void:
 		acceleration = player_acceleration
 		max_speed = player_max_speed
 		frame = 0
+=======
+# func update_player_vars() -> void:
+# 	frame += 1
+# 	if frame % 60 == 0:
+# 		friction = player_friction
+# 		acceleration = player_acceleration
+# 		max_speed = player_max_speed
+# 		frame = 0
+>>>>>>> Stashed changes

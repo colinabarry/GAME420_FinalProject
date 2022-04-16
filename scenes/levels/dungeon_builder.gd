@@ -17,8 +17,9 @@ var room_layout := []
 var current_room := Vector2()
 
 
-func _init(p_size: Vector2) -> void:
+func _init(p_size: Vector2, p_num_rooms: int) -> void:
 	self.room_size = p_size
+	generate_dungeon_tiles(p_num_rooms)
 
 
 func generate_dungeon_tiles(p_num_rooms: int) -> Array:

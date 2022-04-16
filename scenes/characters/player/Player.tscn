@@ -1,6 +1,10 @@
+<<<<<<< Updated upstream
 
 [gd_scene load_steps=11 format=2]
 
+=======
+[gd_scene load_steps=11 format=2]
+>>>>>>> Stashed changes
 
 [ext_resource path="res://scenes/characters/character/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/player/player.gd" type="Script" id=2]
@@ -18,10 +22,33 @@ resource_name = "light_attack"
 [sub_resource type="Animation" id=3]
 resource_name = "wind_up"
 
+<<<<<<< Updated upstream
 [sub_resource type="CircleShape2D" id=1]
 radius = 4.0
 
 [node name="Player" groups=["Player"] instance=ExtResource( 1 )]
+=======
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 1
+emission_sphere_radius = 1.0
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 40.0
+initial_velocity_random = 0.65
+angular_velocity = 720.0
+angular_velocity_random = 0.57
+orbit_velocity = 0.5
+orbit_velocity_random = 0.43
+color = Color( 0.729412, 0.803922, 0.0745098, 1 )
+hue_variation = 0.27
+hue_variation_random = 1.0
+
+[node name="Player" instance=ExtResource( 1 )]
+z_index = 31
+z_as_relative = false
+>>>>>>> Stashed changes
 script = ExtResource( 2 )
 
 [node name="ColorRect" parent="." index="0"]
@@ -62,5 +89,11 @@ script = ExtResource( 5 )
 [node name="HeavyAttackTimer" type="Timer" parent="Weapon" index="0"]
 wait_time = 0.5
 one_shot = true
+
+[node name="Particles2D" type="Particles2D" parent="Weapon" index="1"]
+amount = 1
+lifetime = 100.0
+local_coords = false
+process_material = SubResource( 4 )
 
 [connection signal="timeout" from="Weapon/HeavyAttackTimer" to="Weapon" method="_on_HeavyAttackTimer_timeout"]
