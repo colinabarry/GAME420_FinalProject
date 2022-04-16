@@ -2,6 +2,7 @@ extends Enemy
 var test: bool = true
 var can_move: bool = true
 
+
 func _physics_process(_delta) -> void:
 	look_at(player.position)
 #	Check if move timer is done and the enemy can move
@@ -18,8 +19,8 @@ func _physics_process(_delta) -> void:
 			target_location = target_location.rotated(deg2rad(-30))
 			test = true
 #	move to the new spot
-		$RayCast2D.set_cast_to((target_location-global_position).normalized())
-		move_and_slide((target_location-global_position).normalized() * max_speed * 5)
+		$RayCast2D.set_cast_to((target_location - global_position).normalized())
+		move_and_slide((target_location - global_position).normalized() * max_speed * 10)
 		can_move = false
 #	chase()
 #	move()
@@ -28,4 +29,4 @@ func _physics_process(_delta) -> void:
 
 func _on_MoveCooldown_timeout():
 	can_move = true
-	pass # Replace with function body.
+	pass  # Replace with function body.

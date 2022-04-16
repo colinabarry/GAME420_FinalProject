@@ -26,17 +26,6 @@ func get_input() -> void:
 	input_axis.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	move_direction = input_axis
 
-<<<<<<< Updated upstream
-
-# Debug function to update player variables that are editable on the Player node
-func update_player_vars() -> void:
-	frame += 1
-	if frame % 60 == 0:
-		friction = player_friction
-		acceleration = player_acceleration
-		max_speed = player_max_speed
-		frame = 0
-=======
 # func update_player_vars() -> void:
 # 	frame += 1
 # 	if frame % 60 == 0:
@@ -44,4 +33,3 @@ func update_player_vars() -> void:
 # 		acceleration = player_acceleration
 # 		max_speed = player_max_speed
 # 		frame = 0
->>>>>>> Stashed changes

@@ -2,6 +2,7 @@ class_name DungeonRoom
 extends Reference
 
 var top_left_corner: Vector2
+var center: Vector2
 var layout_position: Vector2
 var size: Vector2
 var index: int
@@ -14,3 +15,4 @@ func _init(p_top_left_corner: Vector2, p_layout_position: Vector2, p_size: Vecto
 	self.layout_position = p_layout_position
 	self.size = p_size
 	self.index = p_index
+	self.center = top_left_corner + (size / 2)
