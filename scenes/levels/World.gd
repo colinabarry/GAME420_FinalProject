@@ -30,6 +30,7 @@ func generate_level() -> void:
 	# player_start += Vector2(dungeon_builder.room_size / 2) * TILE_SIZE
 	player.global_position = player_start
 
+	spawn_medium_enemy(rooms.front())
 	spawn_enemies()
 
 	for cell in map:

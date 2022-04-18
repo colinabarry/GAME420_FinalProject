@@ -105,6 +105,100 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=5]
 radius = 4.0
 
+[sub_resource type="Animation" id=1]
+resource_name = "heavy_attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.201, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 5 ), Vector2( 5, 5 ), Vector2( 8, 5 ), Vector2( 2, 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Weapon/ColorRect:rect_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.2, 0.501 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 89.9999, 89.9999, -89.9999 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "light_attack"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/ColorRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon/ColorRect:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4, 0.401, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 5, 5 ), Vector2( 5, 5 ), Vector2( 11, 5 ), Vector2( 8, 5 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "wind_up"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Weapon/ColorRect:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.101 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8, 5 ), Vector2( 8, 5 ), Vector2( 5, 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Weapon/ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
 [sub_resource type="ParticlesMaterial" id=4]
 emission_shape = 1
 emission_sphere_radius = 1.0
@@ -122,15 +216,6 @@ radial_accel = -17.91
 color = Color( 0.729412, 0.803922, 0.0745098, 1 )
 hue_variation = 0.27
 hue_variation_random = 1.0
-
-[sub_resource type="Animation" id=1]
-resource_name = "heavy_attack"
-
-[sub_resource type="Animation" id=2]
-resource_name = "light_attack"
-
-[sub_resource type="Animation" id=3]
-resource_name = "wind_up"
 
 [node name="Player" groups=["Player"] instance=ExtResource( 1 )]
 z_index = 31
@@ -176,16 +261,31 @@ script = ExtResource( 5 )
 wait_time = 0.5
 one_shot = true
 
-[node name="Particles2D" type="Particles2D" parent="Weapon" index="1"]
+[node name="ColorRect" type="ColorRect" parent="Weapon" index="1"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 6.0
+margin_bottom = 13.0
+rect_rotation = 89.9999
+color = Color( 0.14902, 1, 0, 1 )
+
+[node name="Light2D" type="Light2D" parent="Weapon/ColorRect" index="0"]
+position = Vector2( -8.58307e-06, 4 )
+texture = ExtResource( 4 )
+texture_scale = 0.5
+color = Color( 0.054902, 1, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Weapon" index="2"]
+root_node = NodePath("../..")
+anims/heavy_attack = SubResource( 1 )
+anims/light_attack = SubResource( 2 )
+anims/wind_up = SubResource( 3 )
+
+[node name="Particles2D" type="Particles2D" parent="." index="7"]
 visible = false
 amount = 1
 lifetime = 100.0
 local_coords = false
 process_material = SubResource( 4 )
-
-[node name="AnimationPlayer" parent="." index="7"]
-anims/heavy_attack = SubResource( 1 )
-anims/light_attack = SubResource( 2 )
-anims/wind_up = SubResource( 3 )
 
 [connection signal="timeout" from="Weapon/HeavyAttackTimer" to="Weapon" method="_on_HeavyAttackTimer_timeout"]
