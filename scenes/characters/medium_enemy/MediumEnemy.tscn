@@ -1,7 +1,49 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/characters/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/medium_enemy/MediumEnemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-1.png" type="Texture" id=3]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-3.png" type="Texture" id=4]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-2.png" type="Texture" id=5]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-5.png" type="Texture" id=6]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-0.png" type="Texture" id=7]
+[ext_resource path="res://assets/medium_enemy/pixil-frame-4.png" type="Texture" id=8]
+
+[sub_resource type="Animation" id=2]
+resource_name = "Attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Idle"
+
+[sub_resource type="Animation" id=4]
+resource_name = "Move"
+length = 0.5
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ) ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -11,6 +53,19 @@ z_index = 17
 z_as_relative = false
 collision_mask = 5
 script = ExtResource( 2 )
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Sprite" parent="." index="1"]
+visible = true
+rotation = -1.57079
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/Attack = SubResource( 2 )
+anims/Idle = SubResource( 3 )
+anims/Move = SubResource( 4 )
 
 [node name="PlayerDetector" type="Area2D" parent="." index="5" groups=["MediumEnemy"]]
 collision_layer = 4
@@ -38,6 +93,7 @@ scale = Vector2( 6, 0.2 )
 enabled = true
 collide_with_areas = true
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
 [connection signal="area_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_area_exited"]
 [connection signal="timeout" from="AttackCooldown" to="." method="_on_AttackCooldown_timeout"]

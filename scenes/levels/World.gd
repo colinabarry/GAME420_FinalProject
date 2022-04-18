@@ -30,6 +30,7 @@ func generate_level() -> void:
 	# player_start += Vector2(dungeon_builder.room_size / 2) * TILE_SIZE
 	player.global_position = player_start
 
+	spawn_medium_enemy(rooms.front())
 	spawn_enemies()
 
 	for cell in map:
@@ -62,6 +63,9 @@ func spawn_medium_enemy(room: DungeonRoom) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		reload_level()
+
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
 
 
 func reload_level() -> void:
