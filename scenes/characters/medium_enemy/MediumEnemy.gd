@@ -31,8 +31,8 @@ func _physics_process(_delta) -> void:
 		if (position - player.position).length() > arrival_zone_radius:
 			chase()
 			move()
-		elif (position - player.position).length() <= 49:
-			velocity = move_and_slide((position - player.position).normalized() * max_speed * 1)
+		elif (position - player.position).length() <= arrival_zone_radius-5:
+			velocity = move_and_slide((position - player.position).normalized() * max_speed * .25)
 			if player_in_attack_range:
 				attack()
 		else:

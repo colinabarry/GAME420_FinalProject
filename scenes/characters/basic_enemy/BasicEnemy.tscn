@@ -7,7 +7,7 @@
 script = ExtResource( 2 )
 
 [node name="MoveCooldown" type="Timer" parent="." index="5"]
-wait_time = 0.8
+wait_time = 0.5
 one_shot = true
 
 [node name="RayCast2D" type="RayCast2D" parent="." index="6"]
