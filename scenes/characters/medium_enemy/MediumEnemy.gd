@@ -8,6 +8,12 @@ var attack_target: Vector2
 var attack_start: Vector2
 var is_attacking: bool = false
 
+onready var move_animation_player := $AnimationPlayer
+
+
+func _ready() -> void:
+	move_animation_player.play("Move")
+
 
 func _physics_process(_delta) -> void:
 	look_at(player.position)
@@ -16,17 +22,17 @@ func _physics_process(_delta) -> void:
 		rotation_speed = -rotation_speed
 	elif $RightCollisionRaycast.is_colliding() == true:
 		rotation_speed = -rotation_speed
-	
+
 	if is_attacking:
 		if $AttackLength.time_left == 0:
 			$AttackLength.start()
-		move_and_slide((attack_target-attack_start).normalized() * max_speed * 3)
+		velocity = move_and_slide((attack_target - attack_start).normalized() * max_speed * 3)
 	else:
 		if (position - player.position).length() > arrival_zone_radius:
 			chase()
 			move()
 		elif (position - player.position).length() <= 49:
-			move_and_slide((position-player.position).normalized() * max_speed * 1)
+			velocity = move_and_slide((position - player.position).normalized() * max_speed * 1)
 			if player_in_attack_range:
 				attack()
 		else:
@@ -41,7 +47,8 @@ func lunge() -> void:
 
 func attack() -> void:
 	if can_attack:
-		can_attack = false;
+		move_animation_player.play("Attack")
+		can_attack = false
 		attack_target = player.global_position
 		attack_start = global_position
 		is_attacking = true
@@ -57,14 +64,20 @@ func _on_PlayerDetector_area_entered(area: Area2D) -> void:
 func _on_PlayerDetector_area_exited(area):
 	if area.is_in_group("Player"):
 		player_in_attack_range = false
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 func _on_AttackLength_timeout():
 	is_attacking = false
-	pass # Replace with function body.
+	pass  # Replace with function body.
 
 
 func _on_AttackCooldown_timeout():
 	can_attack = true
-	pass # Replace with function body.
+	# move_animation_player.play("Move")
+	pass  # Replace with function body.
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Attack":
+		move_animation_player.play("Move")

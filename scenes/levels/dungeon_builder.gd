@@ -6,8 +6,8 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CARDINALS := ["east", "north", "west", "south"]
 
 const WALL_VAL := 3
-const BACK_WALL_VAL := 2
-const FLOOR_VAL := 1
+const BACK_WALL_VAL := 5
+const FLOOR_VAL := 6
 const HALL_VAL := 4
 
 var room_size := Vector2()

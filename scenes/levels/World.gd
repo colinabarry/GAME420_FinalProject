@@ -63,6 +63,9 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		reload_level()
 
+	if event.is_action_pressed("ui_cancel"):
+		get_tree().quit()
+
 
 func reload_level() -> void:
 	var _reload_scene = get_tree().reload_current_scene()
