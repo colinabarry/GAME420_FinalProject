@@ -9,27 +9,13 @@ func _physics_process(_delta) -> void:
 	if can_move:
 		if $MoveCooldown.time_left == 0:
 			$MoveCooldown.start()
-##	Rotate the vector 45 degrees to the left or right, alternating
-#		if test:
-#			target_location.x = target_location.x+15
-#			test = false
-#		else:
-#			target_location.x = target_location.x-15
-#			test = true
-##	move to the new spot
-#		move_and_slide((target_location - global_position).normalized() * max_speed * 10)
-#		can_move = false
-##	else:
-##		if (position-player.position).length() <= 30:
-##			print("Orbit")
-##			orbit()
 		chase()
-		alt_move()
+		sporadic_move()
 		can_move = false
 	pass
 
 
-func alt_move() -> void:
+func sporadic_move() -> void:
 	if test:
 		move_direction = move_direction.clamped(1).rotated(deg2rad(25))
 		test = false

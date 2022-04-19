@@ -228,7 +228,8 @@ color = Color( 0, 0.439216, 1, 1 )
 
 [node name="Sprite" parent="." index="1"]
 visible = true
-texture = ExtResource( 7 )
+scale = Vector2( 1, 0.956667 )
+texture = ExtResource( 9 )
 script = ExtResource( 6 )
 
 [node name="MoveAnimationPlayer" type="AnimationPlayer" parent="Sprite" index="0"]
