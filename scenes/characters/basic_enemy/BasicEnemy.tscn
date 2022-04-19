@@ -1,16 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/characters/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/basic_enemy/BasicEnemy.gd" type="Script" id=2]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.0
 
 [node name="BasicEnemy" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="MoveCooldown" type="Timer" parent="." index="5"]
-wait_time = 0.5
+wait_time = 0.1
 one_shot = true
 
-[node name="RayCast2D" type="RayCast2D" parent="." index="6"]
-enabled = true
+[node name="AttackDetection" type="Area2D" parent="." index="6"]
+
+[node name="AttackHitDetection" type="CollisionShape2D" parent="AttackDetection" index="0"]
+shape = SubResource( 1 )
 
 [connection signal="timeout" from="MoveCooldown" to="." method="_on_MoveCooldown_timeout"]
+[connection signal="area_entered" from="AttackDetection" to="." method="_on_AttackDetection_area_entered"]

@@ -81,3 +81,16 @@ func _on_AttackCooldown_timeout():
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Attack":
 		move_animation_player.play("Move")
+
+
+func _on_HitDetection_area_entered(area):
+	if area.is_in_group("Player"):
+		if is_attacking:
+			print("Hit")
+	pass # Replace with function body.
+
+
+func _on_Hitbox_area_entered(area):
+	if area.is_in_group("Player.Weapon"):
+		print("That hurt")
+	pass # Replace with function body.
