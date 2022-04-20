@@ -12,7 +12,7 @@ script = ExtResource( 3 )
 [node name="HealthUnder" type="TextureProgress" parent="."]
 margin_right = 200.0
 margin_bottom = 40.0
-value = 50.0
+value = 100.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 1 )
 tint_progress = Color( 1, 0, 0, 1 )
@@ -20,7 +20,7 @@ tint_progress = Color( 1, 0, 0, 1 )
 [node name="HealthOver" type="TextureProgress" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
-value = 50.0
+value = 100.0
 texture_progress = ExtResource( 1 )
 tint_progress = Color( 0.278431, 1, 0, 1 )
 
