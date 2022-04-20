@@ -7,6 +7,9 @@ export(int) onready var player_max_speed: int = 100
 var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0
 
+export var health: int = 100
+var max_health: int = 100
+
 # func _ready() -> void:
 # 	update_player_vars()
 
@@ -14,6 +17,7 @@ var frame: int = 0
 func _physics_process(_delta: float) -> void:
 	get_input()
 	# update_player_vars()
+	$HealthBar._on_health_updated(health, 0)
 	move()
 
 	# print(move_direction)

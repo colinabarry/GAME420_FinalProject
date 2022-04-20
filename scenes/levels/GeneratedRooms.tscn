@@ -6,7 +6,6 @@
 [ext_resource path="res://assets/back_vall.png" type="Texture" id=4]
 [ext_resource path="res://assets/hallway.png" type="Texture" id=5]
 [ext_resource path="res://scenes/levels/WorldCamera.gd" type="Script" id=6]
-[ext_resource path="res://assets/floor_solid.png" type="Texture" id=7]
 [ext_resource path="res://assets/wall_solid.png" type="Texture" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
@@ -162,6 +161,9 @@ points = PoolVector2Array( 0, 0, 8, 0, 8, 8, 0, 8 )
 
 [sub_resource type="ConvexPolygonShape2D" id=53]
 points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="StreamTexture" id=55]
+load_path = "res://.import/pixil-frame-0_(25).png-3ae6aaa4cfc1bdfd39b1c926dec6cf75.stex"
 
 [sub_resource type="NavigationPolygon" id=54]
 vertices = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -546,7 +548,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 4/shapes = [  ]
 4/z_index = 0
 5/name = "floor_solid.png 5"
-5/texture = ExtResource( 7 )
+5/texture = SubResource( 55 )
 5/tex_offset = Vector2( 0, 0 )
 5/modulate = Color( 1, 1, 1, 1 )
 5/region = Rect2( 0, 0, 8, 8 )
