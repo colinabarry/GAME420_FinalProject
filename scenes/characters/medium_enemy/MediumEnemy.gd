@@ -86,7 +86,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 func _on_HitDetection_area_entered(area):
 	if area.is_in_group("Player"):
 		if is_attacking:
-			print("Hit")
+			player.health -= 10
 	pass # Replace with function body.
 
 

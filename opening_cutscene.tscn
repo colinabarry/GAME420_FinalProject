@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/player_down/pixil-frame-0.png" type="Texture" id=1]
 [ext_resource path="res://assets/medium_enemy/pixil-frame-0.png" type="Texture" id=2]
 [ext_resource path="res://assets/back_vall.png" type="Texture" id=3]
-[ext_resource path="res://assets/floor_solid.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 length = 0.001
@@ -144,6 +143,9 @@ tracks/4/keys = {
 "values": [ "res://.import/pixil-frame-5.png-1f7c1bd79576a5f4820dff2f6082fbc3.stex", "res://.import/pixil-frame-0.png-cbea5237ce6ea7ece7bf901b19d8d506.stex", "res://.import/pixil-frame-5.png-1f7c1bd79576a5f4820dff2f6082fbc3.stex" ]
 }
 
+[sub_resource type="StreamTexture" id=55]
+load_path = "res://.import/pixil-frame-0_(25).png-3ae6aaa4cfc1bdfd39b1c926dec6cf75.stex"
+
 [node name="Node2D" type="Node2D"]
 
 [node name="player" type="Sprite" parent="."]
@@ -171,7 +173,7 @@ margin_bottom = 361.0
 [node name="Floor" type="Sprite" parent="."]
 position = Vector2( 318.5, 326 )
 scale = Vector2( 80.375, 10.25 )
-texture = ExtResource( 4 )
+texture = SubResource( 55 )
 
 [node name="Wall" type="Sprite" parent="."]
 position = Vector2( 276, 150 )
