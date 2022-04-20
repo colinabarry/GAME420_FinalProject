@@ -56,8 +56,8 @@ config/icon="res://assets/icon.png"
 
 [display]
 
-window/size/width=640
-window/size/height=360
+window/size/width=320
+window/size/height=180
 window/size/always_on_top=true
 window/size/test_width=1280
 window/size/test_height=720
