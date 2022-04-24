@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 	flip_h = true if local_mouse_pos.x > 0 else false
 	facing_down = true if local_mouse_pos.y > 0 else false
 
-	if player_vel.length() > 5:
+	if player_vel.length() > 25:
 		if facing_down:
 			move_anim_player.play("WalkDown")
 		else:

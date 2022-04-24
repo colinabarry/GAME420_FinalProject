@@ -49,7 +49,7 @@ tracks/0/keys = {
 radius = 50.0
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 4, 3.5 )
+extents = Vector2( 3.50878, 2.52209 )
 
 [sub_resource type="CircleShape2D" id=6]
 radius = 9.0
@@ -88,10 +88,11 @@ one_shot = true
 wait_time = 0.3
 one_shot = true
 
-[node name="AttackDetection" type="Area2D" parent="." index="8"]
+[node name="AttackDetection" type="Area2D" parent="." index="8" groups=["EnemyAttack", "MediumEnemy"]]
+scale = Vector2( 0.998406, 0.991243 )
 
 [node name="AttackHitDetection" type="CollisionShape2D" parent="AttackDetection" index="0"]
-position = Vector2( 8, -1 )
+position = Vector2( 7.50878, -0.504417 )
 shape = SubResource( 5 )
 
 [node name="Hitbox" type="Area2D" parent="." index="9"]
