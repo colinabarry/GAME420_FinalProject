@@ -9,24 +9,31 @@ func _physics_process(_delta) -> void:
 	if can_move:
 		if $MoveCooldown.time_left == 0:
 			$MoveCooldown.start()
-#	Get the player location vector
-		var target_location: Vector2 = player.global_position
-#	Rotate the vector 45 degrees to the left or right, alternating
-		if test:
-			target_location = target_location.rotated(deg2rad(30))
-			test = false
-		else:
-			target_location = target_location.rotated(deg2rad(-30))
-			test = true
-#	move to the new spot
-		$RayCast2D.set_cast_to((target_location - global_position).normalized())
-		move_and_slide((target_location - global_position).normalized() * max_speed * 10)
+		chase()
+		sporadic_move()
 		can_move = false
-#	chase()
-#	move()
 	pass
+
+
+func sporadic_move() -> void:
+	if test:
+		move_direction = move_direction.clamped(1).rotated(deg2rad(25))
+		test = false
+	else:
+		move_direction = move_direction.clamped(1).rotated(deg2rad(-25))
+		test = true
+	velocity += move_direction * acceleration * 2
+	velocity = velocity.clamped(max_speed)
 
 
 func _on_MoveCooldown_timeout():
 	can_move = true
 	pass  # Replace with function body.
+
+
+func _on_AttackDetection_area_entered(area):
+	if area.is_in_group("Player"):
+		print("Hit")
+		velocity += move_direction * acceleration * 2
+		velocity = -velocity.clamped(max_speed * 2)
+	pass # Replace with function body.

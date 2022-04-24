@@ -31,8 +31,8 @@ func _physics_process(_delta) -> void:
 		if (position - player.position).length() > arrival_zone_radius:
 			chase()
 			move()
-		elif (position - player.position).length() <= 49:
-			velocity = move_and_slide((position - player.position).normalized() * max_speed * 1)
+		elif (position - player.position).length() <= arrival_zone_radius - 5:
+			velocity = move_and_slide((position - player.position).normalized() * max_speed * .25)
 			if player_in_attack_range:
 				attack()
 		else:
@@ -81,3 +81,16 @@ func _on_AttackCooldown_timeout():
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Attack":
 		move_animation_player.play("Move")
+
+
+func _on_HitDetection_area_entered(area):
+	if area.is_in_group("Player"):
+		# if is_attacking:
+		# 	player.health -= 10
+		pass  # Replace with function body.
+
+
+func _on_Hitbox_area_entered(area):
+	if area.is_in_group("Player.Weapon"):
+		print("That hurt")
+	pass  # Replace with function body.
