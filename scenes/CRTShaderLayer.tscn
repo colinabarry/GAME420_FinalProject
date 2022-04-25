@@ -1,0 +1,73 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/CRTShaderMaterial.tres" type="Material" id=1]
+[ext_resource path="res://assets/white_square_16x.png" type="Texture" id=2]
+
+[sub_resource type="Animation" id=37]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 1.25 ]
+}
+
+[sub_resource type="Animation" id=38]
+resource_name = "player_hit"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.07, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.25, 8.0, 1.25 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.06, 0.22 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.25, 8.0, 1.25 ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="CRTShaderRect" type="TextureRect" parent="."]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )
+expand = true
+
+[node name="CRTAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 37 )
+anims/player_hit = SubResource( 38 )

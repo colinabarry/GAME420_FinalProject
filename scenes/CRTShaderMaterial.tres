@@ -1,0 +1,19 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://scenes/CRTShader.gdshader" type="Shader" id=1]
+
+[resource]
+render_priority = 10
+shader = ExtResource( 1 )
+shader_param/scan_line_count = 180.0
+shader_param/scan_line_mix = 0.8
+shader_param/r_offset = 0.0
+shader_param/g_offset = 1.25
+shader_param/b_offset = 1.25
+shader_param/uv_curve_sub = 0.6
+shader_param/uv_curve_mult = 2.0
+shader_param/uv_curve_x_div = 3.5
+shader_param/uv_curve_x_pow = 2.0
+shader_param/uv_curve_y_div = 3.0
+shader_param/uv_curve_y_pow = 2.0
+shader_param/uv_curve_div = 2.35

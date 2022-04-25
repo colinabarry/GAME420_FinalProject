@@ -386,7 +386,6 @@ shape = SubResource( 5 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
-smoothing_enabled = true
 smoothing_speed = 10.0
 
 [node name="Light2D" type="Light2D" parent="." index="5"]
