@@ -17,7 +17,6 @@ func _ready() -> void:
 
 
 func generate_level() -> void:
-	print("Hi")
 	var dungeon_builder = DungeonBuilder.new(ROOM_SIZE_TILES, 10)
 	# var map = dungeon_builder.generate_dungeon_tiles(10)
 	var map = dungeon_builder.carved_tiles

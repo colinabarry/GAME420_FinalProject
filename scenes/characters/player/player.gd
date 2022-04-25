@@ -7,7 +7,6 @@ export(int) onready var player_acceleration: int = 20
 export(int) onready var player_max_speed: int = 100
 export var health: int = 100
 
-var max_health: int = 100
 var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0
 var is_dashing: bool = false

@@ -1,13 +1,18 @@
 extends Control
 
 onready var parent = get_parent()
-onready var health_over = $HealthOver
-onready var health_under = $HealthUnder
-onready var update_tween = $UpdateTween
+onready var health_over := $HealthOver
+onready var health_under := $HealthUnder
+onready var update_tween := $UpdateTween
+
+export(Color) var over_color: Color = Color("47ff00")
+export(Color) var under_color: Color = Color("ff0000")
 
 
 func _ready() -> void:
-	connect("damage_taken", self, "_on_health_updated")
+	health_over.tint_progress = over_color
+	health_under.tint_progress = under_color
+	# connect("damage_taken", self, "_on_health_updated")
 
 
 func on_health_updated(health, amount):
