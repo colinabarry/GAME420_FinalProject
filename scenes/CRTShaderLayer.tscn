@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/CRTShader.gdshader" type="Shader" id=1]
 [ext_resource path="res://assets/white_square_16x.png" type="Texture" id=2]
+[ext_resource path="res://scenes/CRTShaderLayer.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=39]
 render_priority = 2
@@ -13,9 +14,9 @@ shader_param/g_offset = 1.25
 shader_param/b_offset = 1.25
 shader_param/uv_curve_sub = 0.6
 shader_param/uv_curve_mult = 2.0
-shader_param/uv_curve_x_div = 2.412
+shader_param/uv_curve_x_div = 5.0
 shader_param/uv_curve_x_pow = 2.0
-shader_param/uv_curve_y_div = 2.5
+shader_param/uv_curve_y_div = 5.0
 shader_param/uv_curve_y_pow = 2.0
 shader_param/uv_curve_div = 2.35
 
@@ -75,15 +76,15 @@ tracks/1/keys = {
 "values": [ 1.25, 8.0, 1.25 ]
 }
 
-[node name="CRTShaderLayer" type="CanvasLayer"]
-
-[node name="CRTShaderRect" type="TextureRect" parent="."]
+[node name="CRTShaderRect" type="TextureRect"]
 material = SubResource( 39 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
 expand = true
+script = ExtResource( 3 )
 
 [node name="CRTAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 anims/RESET = SubResource( 37 )
 anims/player_hit = SubResource( 38 )

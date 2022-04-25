@@ -9,9 +9,9 @@ uniform float b_offset: hint_range(0, 16) = 1.25;
 uniform float uv_curve_sub: hint_range(0, 1) = 0.6;
 uniform float uv_curve_mult: hint_range(0, 5) = 2.0;
 
-uniform float uv_curve_x_div: hint_range(0, 5) = 3.0;
+uniform float uv_curve_x_div: hint_range(0, 5) = 5.0;
 uniform float uv_curve_x_pow: hint_range(0, 5) = 2.0;
-uniform float uv_curve_y_div: hint_range(0, 5) = 2.5;
+uniform float uv_curve_y_div: hint_range(0, 5) = 5.0;
 uniform float uv_curve_y_pow: hint_range(0, 5) = 2.0;
 
 uniform float uv_curve_div: hint_range(0, 5) = 2.35;

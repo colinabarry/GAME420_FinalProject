@@ -63,10 +63,7 @@ tracks/1/keys = {
 "values": [ 1.25, 8.0, 1.25 ]
 }
 
-[node name="PixelateShaderLayer" type="CanvasLayer"]
-
-[node name="PixelateShaderRect" type="TextureRect" parent="."]
-visible = false
+[node name="PixelateShaderRect" type="TextureRect"]
 material = SubResource( 40 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,5 +71,6 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="CRTAnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 anims/RESET = SubResource( 37 )
 anims/player_hit = SubResource( 38 )

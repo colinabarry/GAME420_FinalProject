@@ -50,10 +50,11 @@ func _physics_process(_delta) -> void:
 
 
 func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		_die()
-	health_bar.on_health_updated(health, amount)
+	if is_alive:
+		health -= amount
+		if health <= 0:
+			_die()
+		health_bar.on_health_updated(health, amount)
 
 
 func _die() -> void:

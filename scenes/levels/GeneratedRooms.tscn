@@ -1,12 +1,10 @@
-[gd_scene load_steps=67 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://scenes/levels/World.gd" type="Script" id=1]
 [ext_resource path="res://assets/TileSet Template.png" type="Texture" id=2]
 [ext_resource path="res://assets/pixil-frame-0_(25).png" type="Texture" id=3]
 [ext_resource path="res://assets/back_vall.png" type="Texture" id=4]
 [ext_resource path="res://assets/hallway.png" type="Texture" id=5]
-[ext_resource path="res://scenes/levels/WorldCamera.gd" type="Script" id=6]
-[ext_resource path="res://scenes/PixelateShaderLayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/wall_solid.png" type="Texture" id=8]
 [ext_resource path="res://scenes/CRTShaderLayer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/levels/Background.gd" type="Script" id=10]
@@ -602,22 +600,12 @@ script = ExtResource( 11 )
 anims/pause = SubResource( 56 )
 
 [node name="WorldShaders" type="CanvasLayer" parent="."]
-layer = 0
+layer = 6
 
-[node name="CRTShaderLayer" parent="WorldShaders" instance=ExtResource( 9 )]
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="WorldShaders"]
-copy_mode = 2
-
-[node name="PixelateShaderLayer" parent="WorldShaders" instance=ExtResource( 7 )]
+[node name="CRTShaderRect" parent="WorldShaders" instance=ExtResource( 9 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0.211765, 1, 1 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2( 0.45, 0.45 )
-smoothing_enabled = true
-script = ExtResource( 6 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 

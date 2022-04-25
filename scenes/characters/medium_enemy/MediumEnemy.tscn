@@ -28,6 +28,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 6 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="Animation" id=7]
 resource_name = "Die"
@@ -81,6 +105,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("CharacterCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -101,6 +137,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -109,7 +169,6 @@ radius = 50.0
 extents = Vector2( 3.50878, 2.52209 )
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 9.0
 
 [node name="MediumEnemy" groups=["MediumEnemy"] instance=ExtResource( 1 )]
 z_index = 17
@@ -125,6 +184,10 @@ visible = true
 rotation = -1.57079
 texture = ExtResource( 10 )
 
+[node name="CharacterCollision" parent="." index="2"]
+modulate = Color( 1, 0, 0, 0.337255 )
+disabled = true
+
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = SubResource( 2 )
 anims/Die = SubResource( 7 )
@@ -136,6 +199,7 @@ collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
+modulate = Color( 1, 1, 1, 0.109804 )
 shape = SubResource( 1 )
 
 [node name="AttackCooldown" type="Timer" parent="." index="6"]
@@ -157,14 +221,17 @@ shape = SubResource( 5 )
 script = ExtResource( 9 )
 
 [node name="Hitcircle" type="CollisionShape2D" parent="Hitbox" index="0"]
+modulate = Color( 1, 1, 1, 0.490196 )
 shape = SubResource( 6 )
 
 [node name="LeftCollisionRaycast" type="RayCast2D" parent="." index="10"]
+modulate = Color( 0, 0.0392157, 1, 0.2 )
 scale = Vector2( 6, 0.2 )
 enabled = true
 collide_with_areas = true
 
 [node name="RightCollisionRaycast" type="RayCast2D" parent="." index="11"]
+modulate = Color( 0, 0.0392157, 1, 0.2 )
 rotation = 3.14159
 scale = Vector2( 6, 0.2 )
 enabled = true
