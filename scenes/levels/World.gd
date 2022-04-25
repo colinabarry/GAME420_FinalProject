@@ -3,6 +3,8 @@ extends Node2D
 const TILE_SIZE := 8
 const ROOM_SIZE_TILES := Vector2(32, 18)
 
+export var can_toggle_pause := true
+
 var Player = preload("res://scenes/characters/player/Player.tscn")
 var BasicEnemy = preload("res://scenes/characters/basic_enemy/BasicEnemy.tscn")
 var MediumEnemy = preload("res://scenes/characters/medium_enemy/MediumEnemy.tscn")
@@ -62,9 +64,6 @@ func spawn_medium_enemy(room: DungeonRoom) -> void:
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept"):
 		reload_level()
-
-	if event.is_action_pressed("ui_cancel"):
-		get_tree().quit()
 
 
 func reload_level() -> void:

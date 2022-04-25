@@ -1,28 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://scenes/CRTShader.gdshader" type="Shader" id=1]
+[ext_resource path="res://scenes/PixelateShaderLayer.gdshader" type="Shader" id=1]
 [ext_resource path="res://assets/white_square_16x.png" type="Texture" id=2]
 
-[sub_resource type="ShaderMaterial" id=39]
-render_priority = 2
+[sub_resource type="ShaderMaterial" id=40]
 shader = ExtResource( 1 )
-shader_param/scan_line_count = 180.0
-shader_param/scan_line_mix = 1.0
-shader_param/r_offset = 0.0
-shader_param/g_offset = 1.25
-shader_param/b_offset = 1.25
-shader_param/uv_curve_sub = 0.6
-shader_param/uv_curve_mult = 2.0
-shader_param/uv_curve_x_div = 2.412
-shader_param/uv_curve_x_pow = 2.0
-shader_param/uv_curve_y_div = 2.5
-shader_param/uv_curve_y_pow = 2.0
-shader_param/uv_curve_div = 2.35
+shader_param/pixelSize = 4
 
 [sub_resource type="Animation" id=37]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
+tracks/0/path = NodePath("PixelateShaderRect:material:shader_param/g_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -34,7 +22,7 @@ tracks/0/keys = {
 "values": [ 1.25 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
+tracks/1/path = NodePath("PixelateShaderRect:material:shader_param/b_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -51,7 +39,7 @@ resource_name = "player_hit"
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
+tracks/0/path = NodePath("PixelateShaderRect:material:shader_param/g_offset")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -63,7 +51,7 @@ tracks/0/keys = {
 "values": [ 1.25, 8.0, 1.25 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
+tracks/1/path = NodePath("PixelateShaderRect:material:shader_param/b_offset")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -75,10 +63,11 @@ tracks/1/keys = {
 "values": [ 1.25, 8.0, 1.25 ]
 }
 
-[node name="CRTShaderLayer" type="CanvasLayer"]
+[node name="PixelateShaderLayer" type="CanvasLayer"]
 
-[node name="CRTShaderRect" type="TextureRect" parent="."]
-material = SubResource( 39 )
+[node name="PixelateShaderRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource( 40 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 2 )
