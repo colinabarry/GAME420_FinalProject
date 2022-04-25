@@ -51,8 +51,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Game 420 Final Project"
-run/main_scene="res://scenes/levels/GeneratedRooms.tscn"
+run/main_scene="res://scenes/menus/main_menu.tscn"
 config/icon="res://assets/icon.png"
+
+[autoload]
+
+EnemyManager="*res://scenes/levels/EnemyManager.gd"
 
 [display]
 
@@ -131,6 +135,11 @@ attack={
 dash={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+menu_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
  ]
 }
 

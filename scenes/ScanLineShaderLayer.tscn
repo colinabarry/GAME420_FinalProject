@@ -1,11 +1,11 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://scenes/CRTShader.gdshader" type="Shader" id=1]
+[ext_resource path="res://scenes/ScanLineShader.gdshader" type="Shader" id=1]
 [ext_resource path="res://assets/white_square_16x.png" type="Texture" id=2]
 [ext_resource path="res://scenes/CRTShaderLayer.gd" type="Script" id=3]
 
 [sub_resource type="ShaderMaterial" id=39]
-render_priority = 7
+render_priority = 2
 shader = ExtResource( 1 )
 shader_param/scan_line_count = 180.0
 shader_param/scan_line_mix = 1.0
@@ -76,7 +76,7 @@ tracks/1/keys = {
 "values": [ 1.25, 8.0, 1.25 ]
 }
 
-[node name="CRTShaderRect" type="TextureRect"]
+[node name="ScanLineShaderRect" type="TextureRect"]
 material = SubResource( 39 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -84,7 +84,7 @@ texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )
 
-[node name="CRTAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="ScanLineAnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("")
 anims/RESET = SubResource( 37 )
 anims/player_hit = SubResource( 38 )

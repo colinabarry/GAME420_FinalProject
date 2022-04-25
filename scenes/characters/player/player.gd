@@ -35,7 +35,6 @@ func get_input() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not is_dashing:
-		print("dash")
 		dash_timer
 		is_dashing = true
 		hurtbox_collision.set_deferred("monitoring", false)
