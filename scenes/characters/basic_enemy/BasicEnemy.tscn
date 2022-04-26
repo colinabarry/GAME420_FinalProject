@@ -1,22 +1,207 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/characters/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/basic_enemy/BasicEnemy.gd" type="Script" id=2]
+[ext_resource path="res://assets/basic_enemy/pixil-frame-1.png" type="Texture" id=3]
+[ext_resource path="res://assets/basic_enemy/pixil-frame-0.png" type="Texture" id=4]
+[ext_resource path="res://scenes/HealthBar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/basic_enemy/dead.png" type="Texture" id=6]
+[ext_resource path="res://scenes/characters/medium_enemy/HealthBarContainer.gd" type="Script" id=7]
+
+[sub_resource type="Animation" id=3]
+resource_name = "die"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0.490196 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthBarContainer/HealthBar:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.35 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HealthBarContainer/HealthBar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.35 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CharacterCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "walk"
+length = 0.4
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ), ExtResource( 3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HealthBarContainer/HealthBar:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HealthBarContainer/HealthBar:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Sprite:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CharacterCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.0
 
 [node name="BasicEnemy" instance=ExtResource( 1 )]
+z_index = 27
+collision_mask = 5
 script = ExtResource( 2 )
+
+[node name="ColorRect" parent="." index="0"]
+visible = false
+
+[node name="Sprite" parent="." index="1"]
+visible = true
+rotation = 1.57079
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/die = SubResource( 3 )
+anims/walk = SubResource( 2 )
 
 [node name="MoveCooldown" type="Timer" parent="." index="5"]
 wait_time = 0.1
 one_shot = true
 
-[node name="AttackDetection" type="Area2D" parent="." index="6"]
+[node name="AttackDetection" type="Area2D" parent="." index="6" groups=["BasicEnemy", "EnemyAttack"]]
 
 [node name="AttackHitDetection" type="CollisionShape2D" parent="AttackDetection" index="0"]
 shape = SubResource( 1 )
+
+[node name="HealthBarContainer" type="Node2D" parent="." index="7"]
+script = ExtResource( 7 )
+
+[node name="HealthBar" parent="HealthBarContainer" index="0" instance=ExtResource( 5 )]
+margin_left = -5.0
+margin_top = -7.0
+margin_right = -5.0
+margin_bottom = -7.0
+rect_scale = Vector2( 0.0553769, 0.0553769 )
+over_color = Color( 0.835294, 0.580392, 0.0313726, 1 )
 
 [connection signal="timeout" from="MoveCooldown" to="." method="_on_MoveCooldown_timeout"]
 [connection signal="area_entered" from="AttackDetection" to="." method="_on_AttackDetection_area_entered"]

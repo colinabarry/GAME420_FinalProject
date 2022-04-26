@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scenes/characters/enemy/Enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/characters/medium_enemy/MediumEnemy.gd" type="Script" id=2]
@@ -27,6 +27,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -81,6 +105,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("CharacterCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
@@ -101,6 +137,62 @@ tracks/0/keys = {
 "update": 1,
 "values": [ ExtResource( 7 ), ExtResource( 3 ), ExtResource( 5 ), ExtResource( 4 ), ExtResource( 8 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("AttackDetection/AttackHitDetection:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CharacterCollision:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -105.0 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "Wiggle"
+length = 0.6
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:rotation_degrees")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ -89.9996, -105.0, -89.9999, -74.9999, -89.9999 ]
+}
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 50.0
@@ -109,7 +201,6 @@ radius = 50.0
 extents = Vector2( 3.50878, 2.52209 )
 
 [sub_resource type="CircleShape2D" id=6]
-radius = 9.0
 
 [node name="MediumEnemy" groups=["MediumEnemy"] instance=ExtResource( 1 )]
 z_index = 17
@@ -122,20 +213,27 @@ visible = false
 
 [node name="Sprite" parent="." index="1"]
 visible = true
-rotation = -1.57079
+rotation = -1.83259
 texture = ExtResource( 10 )
+
+[node name="CharacterCollision" parent="." index="2"]
+modulate = Color( 1, 0, 0, 0.337255 )
+disabled = true
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = SubResource( 2 )
 anims/Die = SubResource( 7 )
 anims/Idle = SubResource( 3 )
 anims/Move = SubResource( 4 )
+anims/RESET = SubResource( 8 )
+anims/Wiggle = SubResource( 9 )
 
 [node name="PlayerDetector" type="Area2D" parent="." index="5" groups=["MediumEnemy"]]
 collision_layer = 4
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector" index="0"]
+modulate = Color( 1, 1, 1, 0.109804 )
 shape = SubResource( 1 )
 
 [node name="AttackCooldown" type="Timer" parent="." index="6"]
@@ -152,19 +250,23 @@ scale = Vector2( 0.998406, 0.991243 )
 [node name="AttackHitDetection" type="CollisionShape2D" parent="AttackDetection" index="0"]
 position = Vector2( 7.50878, -0.504417 )
 shape = SubResource( 5 )
+disabled = true
 
 [node name="Hitbox" type="Area2D" parent="." index="9"]
 script = ExtResource( 9 )
 
 [node name="Hitcircle" type="CollisionShape2D" parent="Hitbox" index="0"]
+modulate = Color( 1, 1, 1, 0.490196 )
 shape = SubResource( 6 )
 
 [node name="LeftCollisionRaycast" type="RayCast2D" parent="." index="10"]
+modulate = Color( 0, 0.0392157, 1, 0.2 )
 scale = Vector2( 6, 0.2 )
 enabled = true
 collide_with_areas = true
 
 [node name="RightCollisionRaycast" type="RayCast2D" parent="." index="11"]
+modulate = Color( 0, 0.0392157, 1, 0.2 )
 rotation = 3.14159
 scale = Vector2( 6, 0.2 )
 enabled = true

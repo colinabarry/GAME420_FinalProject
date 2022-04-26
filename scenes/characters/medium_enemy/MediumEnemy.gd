@@ -8,20 +8,23 @@ var attack_target: Vector2
 var attack_start: Vector2
 var is_attacking: bool = false
 var is_alive := true
+var can_move := true
 
 var max_health := 100
 var health = max_health
 
 onready var move_animation_player := $AnimationPlayer
 onready var health_bar := $HealthBarContainer/HealthBar
+onready var enemy_manager = $"/root/EnemyManager"
 
 
 func _ready() -> void:
 	move_animation_player.play("Move")
+	player = get_tree().current_scene.get_node("Player")
 
 
 func _physics_process(_delta) -> void:
-	if is_alive:
+	if is_alive and can_move:
 		look_at(player.position)
 
 		if $LeftCollisionRaycast.is_colliding() == true:
@@ -50,15 +53,18 @@ func _physics_process(_delta) -> void:
 
 
 func take_damage(amount: int) -> void:
-	health -= amount
-	if health <= 0:
-		_die()
-	health_bar.on_health_updated(health, amount)
+	if is_alive:
+		health -= amount
+		if health <= 0:
+			_die()
+		health_bar.on_health_updated(health, amount)
 
 
 func _die() -> void:
 	is_alive = false
+	$PathTimer.stop()
 	move_animation_player.play("Die")
+	enemy_manager.remove_enemy("medium")
 
 
 func lunge() -> void:
@@ -67,12 +73,8 @@ func lunge() -> void:
 
 func attack() -> void:
 	if can_attack:
-		move_animation_player.play("Attack")
-		can_attack = false
-		attack_target = player.global_position
-		attack_start = global_position
-		is_attacking = true
-		$AttackCooldown.start()
+		can_move = false
+		move_animation_player.play("Wiggle")
 
 
 # Called when the enemy's PlayerDetector detects another Area2D entering it
@@ -99,5 +101,13 @@ func _on_AttackCooldown_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Wiggle":
+		move_animation_player.play("Attack")
+		can_attack = false
+		can_move = true
+		attack_target = player.global_position
+		attack_start = global_position
+		is_attacking = true
+		$AttackCooldown.start()
 	if anim_name == "Attack":
 		move_animation_player.play("Move")
