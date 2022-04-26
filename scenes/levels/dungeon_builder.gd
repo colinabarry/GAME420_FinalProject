@@ -53,7 +53,7 @@ func place_layouts() -> void:
 		# randomize()
 		var next_room = rooms_cpy.pop_front()
 		for tile in layout_tiles:
-			tile.pos += next_room.top_left_corner
+			tile.pos += (next_room.top_left_corner + Vector2(-1, -1))
 			carved_tiles.append(tile)
 
 
