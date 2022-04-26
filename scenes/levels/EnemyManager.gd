@@ -57,6 +57,7 @@ func remove_enemy(type: String) -> bool:
 		print(type, ": ", enemies[type])
 		return true
 	else:
+		reset_enemies()
 		world.win()
 		return false
 
