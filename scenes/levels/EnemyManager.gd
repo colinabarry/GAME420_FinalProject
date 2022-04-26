@@ -15,12 +15,23 @@ func reload_scene() -> void:
 
 
 func spawn_enemies() -> void:
+	var rng = RandomNumberGenerator.new()
 	var rooms_cpy = world.rooms
+	var spawn_room: DungeonRoom
+	rooms_cpy.pop_front()
+	rooms_cpy.shuffle()
 
-	# rooms_cpy.shuffle()
-	var spawn_room = rooms_cpy.pop_front()
-	spawn_basic_enemy(spawn_room)
-	# spawn_medium_enemy(spawn_room)
+	for i in 5:
+		spawn_room = rooms_cpy.pop_front()
+		for j in rng.randi_range(2, 5):
+			spawn_basic_enemy(spawn_room)
+	
+	for i in 3:
+		spawn_room = rooms_cpy.pop_front()
+		for j in rng.randi_range(1, 3):
+			spawn_medium_enemy(spawn_room)
+
+
 
 
 func spawn_basic_enemy(room: DungeonRoom) -> void:
@@ -33,12 +44,7 @@ func spawn_basic_enemy(room: DungeonRoom) -> void:
 
 func spawn_medium_enemy(room: DungeonRoom) -> void:
 	var new_medium_enemy = MediumEnemy.instance()
-	# var spawn_offset = Vector2(
-	# 	rand_range(-1, 1) * (world.ROOM_SIZE_TILES.x / 2), rand_range(-1, 1) * (world.ROOM_SIZE_TILES.y / 2)
-	# )
-	# var enemy_position: Vector2 = (room.center + spawn_offset) * world.TILE_SIZE
 	add_child(new_medium_enemy)
-	# new_medium_enemy.global_position = room.get_random_position(world.ROOM_SIZE_TILES, world.TILE_SIZE)
 	new_medium_enemy.global_position = world.get_spawn_position(room)
 	enemies.medium += 1
 	print("medium: ", enemies.medium)
@@ -47,6 +53,7 @@ func spawn_medium_enemy(room: DungeonRoom) -> void:
 func remove_enemy(type: String) -> bool:
 	if enemies[type] > 1:
 		enemies[type] -= 1
+		world.heal_player(type)
 		print(type, ": ", enemies[type])
 		return true
 	else:

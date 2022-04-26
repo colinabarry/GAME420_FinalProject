@@ -9,6 +9,7 @@ var Player = preload("res://scenes/characters/player/Player.tscn")
 var win_menu := load("res://scenes/menus/WinMenu.tscn")
 var main_menu := load("res://scenes/menus/main_menu.tscn")
 var rooms: Array
+var player: KinematicBody2D
 
 onready var tile_map: = get_tree().current_scene.get_node("Navigation2D/TileMap")
 onready var enemy_manager := $"/root/EnemyManager"
@@ -25,7 +26,7 @@ func generate_level() -> void:
 	var dungeon_builder = DungeonBuilder.new(ROOM_SIZE_TILES, 10)
 	var map = dungeon_builder.carved_tiles
 	rooms = dungeon_builder.rooms
-	var player = Player.instance()
+	player = Player.instance()
 	add_child(player)
 	
 	for cell in map:
@@ -49,6 +50,16 @@ func reload_level() -> void:
 
 func win() -> void:
 	get_tree().change_scene_to(win_menu)
+
+
+func heal_player(enemy_type: String) -> void:
+	var amount: int
+	if enemy_type == "basic":
+		amount = 5
+	if enemy_type == "medium":
+		amount = 15
+
+	player.heal(amount)
 
 
 func get_spawn_position(room: DungeonRoom) -> Vector2:

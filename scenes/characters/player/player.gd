@@ -57,6 +57,12 @@ func take_damage(amount: int) -> void:
 		_die()
 
 
+func heal(amount: int) -> void:
+	if health < 100:
+		health += amount
+		health_bar.on_health_updated(health, amount, true)
+
+
 func _die() -> void:
 	$"/root/EnemyManager".reset_enemies()
 	get_tree().change_scene_to(lose_menu)
