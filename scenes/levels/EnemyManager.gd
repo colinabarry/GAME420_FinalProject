@@ -19,16 +19,27 @@ func spawn_enemies() -> void:
 
 	# rooms_cpy.shuffle()
 	var spawn_room = rooms_cpy.pop_front()
-	spawn_medium_enemy(spawn_room)
+	spawn_basic_enemy(spawn_room)
+	# spawn_medium_enemy(spawn_room)
+
+
+func spawn_basic_enemy(room: DungeonRoom) -> void:
+	var new_basic_enemy = BasicEnemy.instance()
+	add_child(new_basic_enemy)
+	new_basic_enemy.global_position = world.get_spawn_position(room)
+	enemies.basic += 1
+	print("basic: ", enemies.basic)
 
 
 func spawn_medium_enemy(room: DungeonRoom) -> void:
 	var new_medium_enemy = MediumEnemy.instance()
-	var spawn_offset = Vector2(
-		rand_range(-1, 1) * (world.ROOM_SIZE_TILES.x / 2), rand_range(-1, 1) * (world.ROOM_SIZE_TILES.y / 2)
-	)
+	# var spawn_offset = Vector2(
+	# 	rand_range(-1, 1) * (world.ROOM_SIZE_TILES.x / 2), rand_range(-1, 1) * (world.ROOM_SIZE_TILES.y / 2)
+	# )
+	# var enemy_position: Vector2 = (room.center + spawn_offset) * world.TILE_SIZE
 	add_child(new_medium_enemy)
-	new_medium_enemy.global_position = (room.center + spawn_offset) * world.TILE_SIZE
+	# new_medium_enemy.global_position = room.get_random_position(world.ROOM_SIZE_TILES, world.TILE_SIZE)
+	new_medium_enemy.global_position = world.get_spawn_position(room)
 	enemies.medium += 1
 	print("medium: ", enemies.medium)
 

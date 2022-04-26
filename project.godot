@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "NativeScript",
 "path": "res://addons/godot-git-plugin/git_api.gdns"
 }, {
+"base": "Reference",
+"class": "LayoutParser",
+"language": "GDScript",
+"path": "res://scenes/levels/layout_parser.gd"
+}, {
 "base": "Node",
 "class": "RoomWalker",
 "language": "GDScript",
@@ -45,6 +50,7 @@ _global_script_class_icons={
 "DungeonRoom": "",
 "Enemy": "",
 "GitAPI": "",
+"LayoutParser": "",
 "RoomWalker": ""
 }
 

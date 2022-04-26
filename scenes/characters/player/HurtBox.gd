@@ -8,3 +8,5 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 	if area.is_in_group("EnemyAttack"):
 		if area.is_in_group("MediumEnemy"):
 			player.take_damage(25)
+		if area.is_in_group("BasicEnemy"):
+			player.take_damage(10)

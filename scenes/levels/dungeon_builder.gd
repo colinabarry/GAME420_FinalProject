@@ -4,6 +4,7 @@ extends Node
 const SPACING := Vector2(5, 6)
 const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CARDINALS := ["east", "north", "west", "south"]
+const ROOM_FILE_DIR := "assets/room_layouts/"
 
 const WALL_VAL := 3
 const BACK_WALL_VAL := 5
@@ -20,6 +21,8 @@ var current_room := Vector2()
 func _init(p_size: Vector2, p_num_rooms: int) -> void:
 	self.room_size = p_size
 	generate_dungeon_tiles(p_num_rooms)
+	place_layouts()
+	
 
 
 func generate_dungeon_tiles(p_num_rooms: int) -> Array:
@@ -37,6 +40,21 @@ func generate_dungeon_tiles(p_num_rooms: int) -> Array:
 	connect_rooms()
 
 	return carved_tiles
+
+
+func place_layouts() -> void:
+	var layout_parser = LayoutParser.new()
+	var room_layout_files := _get_files_in_dir(ROOM_FILE_DIR)
+	var rooms_cpy := rooms.duplicate()
+	rooms_cpy.shuffle()
+
+	for room_layout in room_layout_files:
+		var layout_tiles: Array = layout_parser.parse_room_file(ROOM_FILE_DIR + room_layout)
+		# randomize()
+		var next_room = rooms_cpy.pop_front()
+		for tile in layout_tiles:
+			tile.pos += next_room.top_left_corner
+			carved_tiles.append(tile)
 
 
 func place_room(p_index: int):
@@ -141,3 +159,18 @@ func array_add_value(arr_a: Array, value) -> Array:
 	for i in arr_a.size():
 		arr_b[i] = arr_a[i] + value
 	return arr_b
+
+
+func _get_files_in_dir(path: String) -> Array:
+	var files := []
+	var dir := Directory.new()
+	dir.open(path)
+	dir.list_dir_begin(true, true)
+
+	while true:
+		var file = dir.get_next()
+		if file == "":
+			break
+		files.append(file)
+	
+	return files

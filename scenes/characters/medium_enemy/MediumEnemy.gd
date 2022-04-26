@@ -8,6 +8,7 @@ var attack_target: Vector2
 var attack_start: Vector2
 var is_attacking: bool = false
 var is_alive := true
+var can_move := true
 
 var max_health := 100
 var health = max_health
@@ -23,7 +24,7 @@ func _ready() -> void:
 
 
 func _physics_process(_delta) -> void:
-	if is_alive:
+	if is_alive and can_move:
 		look_at(player.position)
 
 		if $LeftCollisionRaycast.is_colliding() == true:
@@ -72,6 +73,7 @@ func lunge() -> void:
 
 func attack() -> void:
 	if can_attack:
+		can_move = false
 		move_animation_player.play("Wiggle")
 
 
@@ -102,6 +104,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "Wiggle":
 		move_animation_player.play("Attack")
 		can_attack = false
+		can_move = true
 		attack_target = player.global_position
 		attack_start = global_position
 		is_attacking = true

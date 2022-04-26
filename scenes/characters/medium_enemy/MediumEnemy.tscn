@@ -179,7 +179,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=9]
 resource_name = "Wiggle"
-length = 0.4
+length = 0.6
 step = 0.05
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:rotation_degrees")
@@ -214,10 +214,11 @@ visible = false
 [node name="Sprite" parent="." index="1"]
 visible = true
 rotation = -1.83259
-texture = ExtResource( 7 )
+texture = ExtResource( 10 )
 
 [node name="CharacterCollision" parent="." index="2"]
 modulate = Color( 1, 0, 0, 0.337255 )
+disabled = true
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/Attack = SubResource( 2 )
