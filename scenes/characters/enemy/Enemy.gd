@@ -9,8 +9,9 @@ var rotation_speed: float = .025
 onready var navigation: Navigation2D = get_tree().current_scene.get_node("Navigation2D")
 onready var player: KinematicBody2D = get_tree().current_scene.get_node("Player")
 
-# func _physics_process(delta: float) -> void:
-# 	pass
+
+func _ready() -> void:
+	player = get_tree().current_scene.get_node("Player")
 
 
 func chase() -> void:

@@ -7,10 +7,11 @@ export(int) onready var player_acceleration: int = 20
 export(int) onready var player_max_speed: int = 100
 export var health: int = 100
 
-var max_health: int = 100
 var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0
 var is_dashing: bool = false
+
+var lose_menu := load("res://scenes/menus/LoseScreen.tscn")
 
 onready var health_bar := $HealthBar
 onready var dash_timer := $DashTimer
@@ -36,7 +37,6 @@ func get_input() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dash") and not is_dashing:
-		print("dash")
 		dash_timer
 		is_dashing = true
 		hurtbox_collision.set_deferred("monitoring", false)
@@ -57,5 +57,12 @@ func take_damage(amount: int) -> void:
 		_die()
 
 
+func heal(amount: int) -> void:
+	if health < 100:
+		health += amount
+		health_bar.on_health_updated(health, amount, true)
+
+
 func _die() -> void:
-	get_tree().reload_current_scene()
+	$"/root/EnemyManager".reset_enemies()
+	get_tree().change_scene_to(lose_menu)

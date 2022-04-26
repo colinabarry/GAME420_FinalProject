@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/light.png" type="Texture" id=1]
+[ext_resource path="res://scenes/menus/MenuButton.gd" type="Script" id=2]
+
+[node name="MenuButton" type="ColorRect"]
+modulate = Color( 1, 1, 1, 0.0588235 )
+margin_left = 115.0
+margin_top = 88.0
+margin_right = 201.0
+margin_bottom = 112.0
+color = Color( 1, 1, 1, 0 )
+script = ExtResource( 2 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 44, 13 )
+scale = Vector2( 2.2, 0.759998 )
+texture = ExtResource( 1 )
+color = Color( 1, 1, 1, 0 )
+energy = 0.75
+
+[node name="Tween" type="Tween" parent="."]
+
+[connection signal="gui_input" from="." to="." method="_on_MenuButton_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_MenuButton_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_MenuButton_mouse_exited"]

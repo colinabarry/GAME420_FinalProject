@@ -7,38 +7,64 @@ var attack_interval: int = 5
 var attack_target: Vector2
 var attack_start: Vector2
 var is_attacking: bool = false
+var is_alive := true
+var can_move := true
+
+var max_health := 100
+var health = max_health
 
 onready var move_animation_player := $AnimationPlayer
+onready var health_bar := $HealthBarContainer/HealthBar
+onready var enemy_manager = $"/root/EnemyManager"
 
 
 func _ready() -> void:
 	move_animation_player.play("Move")
+	player = get_tree().current_scene.get_node("Player")
 
 
 func _physics_process(_delta) -> void:
-	look_at(player.position)
+	if is_alive and can_move:
+		look_at(player.position)
 
-	if $LeftCollisionRaycast.is_colliding() == true:
-		rotation_speed = -rotation_speed
-	elif $RightCollisionRaycast.is_colliding() == true:
-		rotation_speed = -rotation_speed
+		if $LeftCollisionRaycast.is_colliding() == true:
+			rotation_speed = -rotation_speed
+		elif $RightCollisionRaycast.is_colliding() == true:
+			rotation_speed = -rotation_speed
 
-	if is_attacking:
-		if $AttackLength.time_left == 0:
-			$AttackLength.start()
-		velocity = move_and_slide((attack_target - attack_start).normalized() * max_speed * 3)
-	else:
-		if (position - player.position).length() > arrival_zone_radius:
-			chase()
-			move()
-		elif (position - player.position).length() <= arrival_zone_radius - 5:
-			velocity = move_and_slide((position - player.position).normalized() * max_speed * .25)
-			if player_in_attack_range:
-				attack()
+		if is_attacking:
+			if $AttackLength.time_left == 0:
+				$AttackLength.start()
+			velocity = move_and_slide((attack_target - attack_start).normalized() * max_speed * 3)
 		else:
-			orbit()
-			if player_in_attack_range:
-				attack()
+			if (position - player.position).length() > arrival_zone_radius:
+				chase()
+				move()
+			elif (position - player.position).length() <= arrival_zone_radius - 5:
+				velocity = move_and_slide((position - player.position).normalized() * max_speed * .25)
+				if player_in_attack_range:
+					attack()
+			else:
+				orbit()
+				if player_in_attack_range:
+					attack()
+	else:
+		velocity = lerp(velocity, Vector2.ZERO, 0.05)
+
+
+func take_damage(amount: int) -> void:
+	if is_alive:
+		health -= amount
+		if health <= 0:
+			_die()
+		health_bar.on_health_updated(health, amount)
+
+
+func _die() -> void:
+	is_alive = false
+	$PathTimer.stop()
+	move_animation_player.play("Die")
+	enemy_manager.remove_enemy("medium")
 
 
 func lunge() -> void:
@@ -47,12 +73,8 @@ func lunge() -> void:
 
 func attack() -> void:
 	if can_attack:
-		move_animation_player.play("Attack")
-		can_attack = false
-		attack_target = player.global_position
-		attack_start = global_position
-		is_attacking = true
-		$AttackCooldown.start()
+		can_move = false
+		move_animation_player.play("Wiggle")
 
 
 # Called when the enemy's PlayerDetector detects another Area2D entering it
@@ -79,18 +101,13 @@ func _on_AttackCooldown_timeout():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	if anim_name == "Wiggle":
+		move_animation_player.play("Attack")
+		can_attack = false
+		can_move = true
+		attack_target = player.global_position
+		attack_start = global_position
+		is_attacking = true
+		$AttackCooldown.start()
 	if anim_name == "Attack":
 		move_animation_player.play("Move")
-
-
-func _on_HitDetection_area_entered(area):
-	if area.is_in_group("Player"):
-		# if is_attacking:
-		# 	player.health -= 10
-		pass  # Replace with function body.
-
-
-func _on_Hitbox_area_entered(area):
-	if area.is_in_group("Player.Weapon"):
-		print("That hurt")
-	pass  # Replace with function body.
