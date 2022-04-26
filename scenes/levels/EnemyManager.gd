@@ -21,6 +21,8 @@ func spawn_enemies() -> void:
 	rooms_cpy.pop_front()
 	rooms_cpy.shuffle()
 
+	# spawn_basic_enemy(world.rooms.front())
+
 	for i in 5:
 		spawn_room = rooms_cpy.pop_front()
 		for j in rng.randi_range(2, 5):
