@@ -80,6 +80,7 @@ tracks/1/keys = {
 material = SubResource( 39 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
 script = ExtResource( 3 )

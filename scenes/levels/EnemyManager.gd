@@ -17,14 +17,8 @@ func reload_scene() -> void:
 func spawn_enemies() -> void:
 	var rooms_cpy = world.rooms
 
-	rooms_cpy.shuffle()
+	# rooms_cpy.shuffle()
 	var spawn_room = rooms_cpy.pop_front()
-	spawn_medium_enemy(spawn_room)
-	spawn_room = rooms_cpy.pop_front()
-	spawn_medium_enemy(spawn_room)
-	spawn_room = rooms_cpy.pop_front()
-	spawn_medium_enemy(spawn_room)
-	spawn_room = rooms_cpy.pop_front()
 	spawn_medium_enemy(spawn_room)
 
 
@@ -40,7 +34,7 @@ func spawn_medium_enemy(room: DungeonRoom) -> void:
 
 
 func remove_enemy(type: String) -> bool:
-	if enemies[type] > 0:
+	if enemies[type] > 1:
 		enemies[type] -= 1
 		print(type, ": ", enemies[type])
 		return true

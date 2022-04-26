@@ -17,6 +17,7 @@ position = Vector2( 44, 13 )
 scale = Vector2( 2.2, 0.759998 )
 texture = ExtResource( 1 )
 color = Color( 1, 1, 1, 0 )
+energy = 0.75
 
 [node name="Tween" type="Tween" parent="."]
 

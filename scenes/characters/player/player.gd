@@ -11,6 +11,8 @@ var input_axis: Vector2 = Vector2.ZERO
 var frame: int = 0
 var is_dashing: bool = false
 
+var lose_menu := load("res://scenes/menus/LoseScreen.tscn")
+
 onready var health_bar := $HealthBar
 onready var dash_timer := $DashTimer
 onready var hurtbox_collision := $HurtBox
@@ -56,4 +58,5 @@ func take_damage(amount: int) -> void:
 
 
 func _die() -> void:
-	get_tree().reload_current_scene()
+	$"/root/EnemyManager".reset_enemies()
+	get_tree().change_scene_to(lose_menu)

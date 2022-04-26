@@ -9,6 +9,11 @@ onready var light := $Light2D
 onready var tween = $Tween
 
 
+func _ready() -> void:
+	var light_pos = rect_position + rect_size / 2
+	light.global_position = light_pos
+
+
 func _on_MenuButton_gui_input(event:InputEvent):
 	if event.is_action_pressed("menu_click"):
 		if new_scene:

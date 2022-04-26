@@ -6,6 +6,8 @@ const ROOM_SIZE_TILES := Vector2(32, 18)
 export var can_toggle_pause := true
 
 var Player = preload("res://scenes/characters/player/Player.tscn")
+var win_menu := load("res://scenes/menus/WinMenu.tscn")
+var main_menu := load("res://scenes/menus/main_menu.tscn")
 var rooms: Array
 
 onready var tile_map = get_tree().current_scene.get_node("Navigation2D/TileMap")
@@ -45,4 +47,4 @@ func reload_level() -> void:
 
 
 func win() -> void:
-	pass
+	get_tree().change_scene_to(win_menu)

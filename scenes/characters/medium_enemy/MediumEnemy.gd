@@ -61,6 +61,7 @@ func take_damage(amount: int) -> void:
 
 func _die() -> void:
 	is_alive = false
+	$PathTimer.stop()
 	move_animation_player.play("Die")
 	enemy_manager.remove_enemy("medium")
 
