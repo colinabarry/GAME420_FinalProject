@@ -16,6 +16,7 @@ var lose_menu := load("res://scenes/menus/LoseScreen.tscn")
 onready var health_bar := $HealthBar
 onready var dash_timer := $DashTimer
 onready var hurtbox_collision := $HurtBox
+onready var screen_shake := $Camera2D/ScreenShake
 
 # func _ready() -> void:
 # 	update_player_vars()
@@ -23,7 +24,6 @@ onready var hurtbox_collision := $HurtBox
 
 func _physics_process(_delta: float) -> void:
 	get_input()
-	# $HealthBar._on_health_updated(health, 0)
 	move()
 
 
@@ -41,8 +41,13 @@ func _input(event: InputEvent) -> void:
 		is_dashing = true
 		hurtbox_collision.set_deferred("monitoring", false)
 		max_speed = 300
-		velocity += velocity
+		if velocity.length() <= 10:
+			var to_mouse = ((get_global_mouse_position() - Vector2(0, 9)) - position)
+			velocity = to_mouse.normalized() * 300
+		else:
+			velocity = velocity.normalized() * 300
 		yield(get_tree().create_timer(0.2), "timeout")
+		
 		max_speed = 50
 		hurtbox_collision.set_deferred("monitoring", true)
 		is_dashing = false
@@ -50,9 +55,11 @@ func _input(event: InputEvent) -> void:
 
 func take_damage(amount: int) -> void:
 	if health - amount > 0:
+		var shake_amp = map_range(amount, Vector2(5, 25), Vector2(0.5, 4))
+		screen_shake.start(0.2, 12, shake_amp, 5)
 		health -= amount
-		# emit_signal("player_damaged", health, amount)
 		health_bar.on_health_updated(health, amount)
+		# emit_signal("player_damaged", health, amount)
 	else:
 		_die()
 
@@ -66,3 +73,7 @@ func heal(amount: int) -> void:
 func _die() -> void:
 	$"/root/EnemyManager".reset_enemies()
 	get_tree().change_scene_to(lose_menu)
+
+
+func map_range(range_a_value: float, range_a: Vector2, range_b: Vector2) -> float:
+	return range_b.x + (range_a_value - range_a.x)*(range_b.y - range_b.x) / (range_a.y - range_a.x)

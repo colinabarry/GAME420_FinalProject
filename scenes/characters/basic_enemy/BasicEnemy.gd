@@ -59,7 +59,6 @@ func _on_MoveCooldown_timeout():
 
 func _on_AttackDetection_area_entered(area):
 	if area.is_in_group("Player"):
-		print("Hit")
 		velocity += move_direction * acceleration * 2
 		velocity = -velocity.clamped(max_speed * 2)
 	if area.is_in_group("light_attack"):

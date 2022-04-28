@@ -609,7 +609,7 @@ layer = 6
 [node name="CRTShaderRect" parent="WorldShaders" instance=ExtResource( 9 )]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0.211765, 1, 1 )
+color = Color( 0, 0.0862745, 0.403922, 1 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 

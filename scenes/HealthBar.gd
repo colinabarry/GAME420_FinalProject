@@ -7,11 +7,14 @@ onready var update_tween := $UpdateTween
 
 export(Color) var over_color: Color = Color("47ff00")
 export(Color) var under_color: Color = Color("ff0000")
+export(int, 200) var max_health := 100
 
 
 func _ready() -> void:
 	health_over.tint_progress = over_color
+	health_over.max_value = max_health
 	health_under.tint_progress = under_color
+	health_under.max_value = max_health
 	# connect("damage_taken", self, "_on_health_updated")
 
 
