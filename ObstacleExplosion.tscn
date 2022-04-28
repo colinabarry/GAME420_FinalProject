@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://obstacle_explosion.tres" type="Material" id=1]
+[ext_resource path="res://assets/1x1_#ffffffff.png" type="Texture" id=2]
+
+[node name="ObstacleExplosion" type="Particles2D"]
+amount = 8192
+lifetime = 600.0
+explosiveness = 1.0
+local_coords = false
+process_material = ExtResource( 1 )
+texture = ExtResource( 2 )

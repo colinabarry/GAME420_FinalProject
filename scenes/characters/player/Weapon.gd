@@ -10,7 +10,7 @@ onready var weapon := $Pencil
 
 
 func _physics_process(_delta: float) -> void:
-	look_at(get_global_mouse_position())
+	look_at(get_global_mouse_position() - Vector2(0, 9))
 
 
 func _input(event: InputEvent) -> void:
