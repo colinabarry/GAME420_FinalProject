@@ -16,6 +16,7 @@ var health = max_health
 onready var move_animation_player := $AnimationPlayer
 onready var health_bar := $HealthBarContainer/HealthBar
 onready var enemy_manager = $"/root/EnemyManager"
+onready var hurt_sound := $SFX
 
 
 func _ready() -> void:
@@ -54,6 +55,8 @@ func _physics_process(_delta) -> void:
 
 func take_damage(amount: int) -> void:
 	if is_alive:
+		hurt_sound.stream = load("res://assets/sound/sfx/enemyHurt.wav")
+		hurt_sound.play()
 		health -= amount
 		if health <= 0:
 			_die()

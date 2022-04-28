@@ -780,8 +780,10 @@ color = Color( 0, 0, 0, 1 )
 script = ExtResource( 10 )
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 13 )
 autoplay = true
+bus = "Music"
 
 [node name="TransitionPlayer" type="AnimationPlayer" parent="."]
 anims/RESET = SubResource( 60 )
