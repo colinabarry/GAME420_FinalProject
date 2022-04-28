@@ -17,6 +17,8 @@ onready var health_bar := $HealthBar
 onready var dash_timer := $DashTimer
 onready var hurtbox_collision := $HurtBox
 onready var screen_shake := $Camera2D/ScreenShake
+onready var world := get_tree().current_scene
+onready var world_transition := world.get_node("TransitionPlayer")
 
 # func _ready() -> void:
 # 	update_player_vars()
@@ -71,7 +73,10 @@ func heal(amount: int) -> void:
 
 
 func _die() -> void:
+	world_transition.play_backwards("transition")
+	yield(get_tree().create_timer(0.9), "timeout")
 	$"/root/EnemyManager".reset_enemies()
+	yield(get_tree().create_timer(0.05), "timeout")
 	get_tree().change_scene_to(lose_menu)
 
 

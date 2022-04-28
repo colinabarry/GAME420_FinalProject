@@ -431,7 +431,8 @@ smoothing_speed = 10.0
 
 [node name="Light2D" type="Light2D" parent="." index="5"]
 texture = ExtResource( 4 )
-texture_scale = 2.0
+texture_scale = 2.25
+shadow_enabled = true
 
 [node name="Weapon" type="Area2D" parent="." index="6"]
 script = ExtResource( 5 )

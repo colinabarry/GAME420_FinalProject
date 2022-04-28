@@ -6,9 +6,9 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CARDINALS := ["east", "north", "west", "south"]
 const ROOM_FILE_DIR := "assets/room_layouts/"
 
-const WALL_VAL := 3
-const BACK_WALL_VAL := 5
-const FLOOR_VAL := 6
+const WALL_VAL := 9
+const BACK_WALL_VAL := 7
+const FLOOR_VAL := 8
 const HALL_VAL := 4
 
 var room_size := Vector2()

@@ -1,7 +1,7 @@
 class_name LayoutParser
 extends Reference
 
-const WALL_VAL := 3
+const WALL_VAL := 9
 
 
 func parse_room_file(file_name: String) -> Array:

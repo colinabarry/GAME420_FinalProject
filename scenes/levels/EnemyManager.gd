@@ -30,7 +30,7 @@ func spawn_enemies() -> void:
 	
 	for i in 3:
 		spawn_room = rooms_cpy.pop_front()
-		for j in rng.randi_range(1, 3):
+		for j in rng.randi_range(1, 2):
 			spawn_medium_enemy(spawn_room)
 
 

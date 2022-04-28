@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://scenes/levels/World.gd" type="Script" id=1]
 [ext_resource path="res://assets/TileSet Template.png" type="Texture" id=2]
@@ -6,13 +6,19 @@
 [ext_resource path="res://assets/back_vall.png" type="Texture" id=4]
 [ext_resource path="res://assets/hallway.png" type="Texture" id=5]
 [ext_resource path="res://scenes/levels/EnemyManager.gd" type="Script" id=6]
+[ext_resource path="res://assets/backwall.png" type="Texture" id=7]
 [ext_resource path="res://assets/wall_solid.png" type="Texture" id=8]
 [ext_resource path="res://scenes/CRTShaderLayer.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/levels/Background.gd" type="Script" id=10]
 [ext_resource path="res://scenes/levels/PauseController.gd" type="Script" id=11]
+[ext_resource path="res://assets/floor.png" type="Texture" id=12]
+[ext_resource path="res://assets/sound/music/2020-10-26_-_Ghost_Stories_-_www.FesliyanStudios.com_Steve_Oxen.mp3" type="AudioStream" id=13]
 
 [sub_resource type="Animation" id=56]
 resource_name = "pause"
+
+[sub_resource type="OccluderPolygon2D" id=62]
+polygon = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
 
 [sub_resource type="ConvexPolygonShape2D" id=2]
 points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
@@ -175,6 +181,22 @@ load_path = "res://.import/pixil-frame-0_(25).png-3ae6aaa4cfc1bdfd39b1c926dec6cf
 vertices = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
 polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 
+[sub_resource type="OccluderPolygon2D" id=57]
+polygon = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=58]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="NavigationPolygon" id=59]
+vertices = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
+
+[sub_resource type="OccluderPolygon2D" id=63]
+polygon = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
+[sub_resource type="ConvexPolygonShape2D" id=64]
+points = PoolVector2Array( 8, 8, 0, 8, 0, 0, 8, 0 )
+
 [sub_resource type="TileSet" id=1]
 0/name = "TileSet Template.png 0"
 0/texture = ExtResource( 2 )
@@ -187,7 +209,7 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 0/autotile/icon_coordinate = Vector2( 3, 3 )
 0/autotile/tile_size = Vector2( 8, 8 )
 0/autotile/spacing = 0
-0/autotile/occluder_map = [  ]
+0/autotile/occluder_map = [ Vector2( 1, 1 ), SubResource( 62 ) ]
 0/autotile/navpoly_map = [  ]
 0/autotile/priority_map = [  ]
 0/autotile/z_index_map = [  ]
@@ -589,6 +611,119 @@ polygons = [ PoolIntArray( 0, 1, 2, 3 ) ]
 6/shape_one_way_margin = 0.0
 6/shapes = [  ]
 6/z_index = 0
+7/name = "backwall.png 7"
+7/texture = ExtResource( 7 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 0, 0, 8, 8 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/occluder = SubResource( 57 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shape_offset = Vector2( 0, 0 )
+7/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+7/shape = SubResource( 58 )
+7/shape_one_way = false
+7/shape_one_way_margin = 1.0
+7/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 58 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+7/z_index = 0
+8/name = "floor.png 8"
+8/texture = ExtResource( 12 )
+8/tex_offset = Vector2( 0, 0 )
+8/modulate = Color( 1, 1, 1, 1 )
+8/region = Rect2( 0, 0, 8, 8 )
+8/tile_mode = 0
+8/occluder_offset = Vector2( 0, 0 )
+8/navigation_offset = Vector2( 0, 0 )
+8/navigation = SubResource( 59 )
+8/shape_offset = Vector2( 0, 0 )
+8/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+8/shape_one_way = false
+8/shape_one_way_margin = 0.0
+8/shapes = [  ]
+8/z_index = 0
+9/name = "wall_solid.png 9"
+9/texture = ExtResource( 8 )
+9/tex_offset = Vector2( 0, 0 )
+9/modulate = Color( 0, 0, 0, 1 )
+9/region = Rect2( 0, 0, 8, 8 )
+9/tile_mode = 0
+9/occluder_offset = Vector2( 0, 0 )
+9/occluder = SubResource( 63 )
+9/navigation_offset = Vector2( 0, 0 )
+9/shape_offset = Vector2( 0, 0 )
+9/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+9/shape = SubResource( 64 )
+9/shape_one_way = false
+9/shape_one_way_margin = 1.0
+9/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 64 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+9/z_index = 0
+
+[sub_resource type="Animation" id=60]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("WorldShaders/CRTShaderRect:material:shader_param/uv_curve_x_div")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 5.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WorldShaders/TransitionRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=61]
+resource_name = "transition"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WorldShaders/CRTShaderRect:material:shader_param/uv_curve_x_div")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 10.9283 ),
+"update": 0,
+"values": [ 0.0, 0.0, 5.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("WorldShaders/TransitionRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 0 ) ]
+}
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -608,8 +743,14 @@ layer = 6
 
 [node name="CRTShaderRect" parent="WorldShaders" instance=ExtResource( 9 )]
 
+[node name="TransitionRect" type="ColorRect" parent="WorldShaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 320, 180 )
+color = Color( 0, 0, 0, 1 )
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0.0862745, 0.403922, 1 )
+color = Color( 0, 0.121569, 0.560784, 1 )
 
 [node name="Navigation2D" type="Navigation2D" parent="."]
 
@@ -631,3 +772,11 @@ margin_bottom = 3555.0
 mouse_filter = 2
 color = Color( 0, 0, 0, 1 )
 script = ExtResource( 10 )
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+autoplay = true
+
+[node name="TransitionPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 60 )
+anims/transition = SubResource( 61 )
