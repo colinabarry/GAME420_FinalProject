@@ -25,6 +25,7 @@ onready var dash_sfx := load("res://assets/sound/sfx/dash.wav")
 onready var heal_sfx := load("res://assets/sound/sfx/heal.wav")
 onready var world := get_tree().current_scene
 onready var world_transition := world.get_node("TransitionPlayer")
+onready var crt_anim := world.get_node("WorldShaders/CRTShaderRect/CRTAnimationPlayer")
 
 # func _ready() -> void:
 # 	update_player_vars()
@@ -65,6 +66,10 @@ func _input(event: InputEvent) -> void:
 
 func take_damage(amount: int) -> void:
 	if health - amount > 0:
+		world.get_node("PauseController").pause()
+		yield(get_tree().create_timer(0.08), "timeout")
+		world.get_node("PauseController").resume()
+		crt_anim.play("player_hit")
 		play_sound(hurt_sfx)
 		var shake_amp = map_range(amount, Vector2(5, 25), Vector2(0.5, 4))
 		screen_shake.start(0.2, 12, shake_amp, 5)

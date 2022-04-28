@@ -6,6 +6,7 @@ var health = 40
 
 onready var health_bar = $HealthBarContainer/HealthBar
 onready var enemy_manager = $"/root/EnemyManager"
+onready var hurt_sound := $SFX
 
 
 func _ready() -> void:
@@ -39,6 +40,8 @@ func sporadic_move() -> void:
 
 func _take_damage(amount: int) -> void:
 	if is_alive:
+		hurt_sound.stream = load("res://assets/sound/sfx/enemyHurt.wav")
+		hurt_sound.play()
 		health -= amount
 		if health <= 0:
 			_die()

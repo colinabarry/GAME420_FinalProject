@@ -247,6 +247,7 @@ stream = ExtResource( 9 )
 volume_db = -6.118
 max_distance = 200.0
 attenuation = 3.605
+bus = "Basic"
 
 [connection signal="timeout" from="MoveCooldown" to="." method="_on_MoveCooldown_timeout"]
 [connection signal="area_entered" from="AttackDetection" to="." method="_on_AttackDetection_area_entered"]

@@ -352,6 +352,7 @@ over_color = Color( 1, 0.447059, 0, 1 )
 stream = ExtResource( 13 )
 max_distance = 300.0
 attenuation = 5.27803
+bus = "Medium"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_area_entered"]
