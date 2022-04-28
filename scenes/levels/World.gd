@@ -35,6 +35,10 @@ func generate_level() -> void:
 	for cell in map:
 		tile_map.set_cellv(cell.pos, cell.val)
 	
+	for ob in dungeon_builder.obstacles:
+		add_child(ob["obstacle"])
+		ob["obstacle"].global_position = get_spawn_position(ob["room"])
+	
 	# var player_start: Vector2 = rooms.front().get_random_position(ROOM_SIZE_TILES, TILE_SIZE)
 	var player_start := get_spawn_position(rooms.front())
 	player.global_position = player_start
@@ -66,7 +70,7 @@ func heal_player(enemy_type: String) -> void:
 
 
 func get_spawn_position(room: DungeonRoom) -> Vector2:
-	var spawn_position := room.get_random_position(ROOM_SIZE_TILES, TILE_SIZE)
+	var spawn_position := room.get_random_position(ROOM_SIZE_TILES - Vector2(2, 2), TILE_SIZE)
 	var tile_position: Vector2 = tile_map.world_to_map(spawn_position) 
 	while tile_map.get_cellv(tile_position) != DungeonBuilder.FLOOR_VAL:
 		spawn_position = room.get_random_position(ROOM_SIZE_TILES, TILE_SIZE)

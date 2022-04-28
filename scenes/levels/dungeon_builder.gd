@@ -6,6 +6,15 @@ const DIRECTIONS := [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 const CARDINALS := ["east", "north", "west", "south"]
 const ROOM_FILE_DIR := "assets/room_layouts/"
 
+const car := preload("res://assets/obstacles/8x8Car.png")
+const chair := preload("res://assets/obstacles/8x8Chair.png")
+const elephant := preload("res://assets/obstacles/8x8Elephant.png")
+const lamp := preload("res://assets/obstacles/8x8Lamp.png")
+const table := preload("res://assets/obstacles/8x8Table.png")
+const tank := preload("res://assets/obstacles/8x8Tank.png")
+const whale := preload("res://assets/obstacles/8x8Whale.png")
+const OBSTACLES = [car, chair, elephant, lamp, table, tank, whale]
+
 const WALL_VAL := 9
 const BACK_WALL_VAL := 7
 const FLOOR_VAL := 8
@@ -14,14 +23,20 @@ const HALL_VAL := 4
 var room_size := Vector2()
 var carved_tiles := []
 var rooms := []
+var obstacles := []
 var room_layout := []
 var current_room := Vector2()
+var Obstacle = load("res://Obstacle.tscn")
+var rng = RandomNumberGenerator.new()
+
+onready var world = get_tree().current_scene
 
 
 func _init(p_size: Vector2, p_num_rooms: int) -> void:
 	self.room_size = p_size
 	generate_dungeon_tiles(p_num_rooms)
 	place_layouts()
+	spawn_obstacles()
 	
 
 
@@ -40,6 +55,19 @@ func generate_dungeon_tiles(p_num_rooms: int) -> Array:
 	connect_rooms()
 
 	return carved_tiles
+
+
+func spawn_obstacles() -> void:
+	for room in rooms:
+		for i in rng.randi_range(6, 14):
+			var sprite = OBSTACLES[rng.randi_range(0, OBSTACLES.size() - 1)]
+			spawn_obstacle(sprite, room)
+
+
+func spawn_obstacle(sprite: StreamTexture, room: DungeonRoom) -> void:
+	var obstacle = Obstacle.instance()
+	obstacle.set_sprite(sprite)
+	obstacles.append({obstacle = obstacle, room = room})
 
 
 func place_layouts() -> void:

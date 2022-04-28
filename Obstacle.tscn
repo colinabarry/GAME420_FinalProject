@@ -1,17 +1,27 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://ObstacleExplosion.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ObstacleExplosion.gd" type="Script" id=2]
+[ext_resource path="res://Obstacle.gd" type="Script" id=3]
+[ext_resource path="res://assets/obstacles/8x8Car.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Obstacle" type="Area2D"]
+z_index = 9
+z_as_relative = false
+script = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+z_index = 17
+texture = ExtResource( 4 )
 
 [node name="ObstacleExplosion" parent="." instance=ExtResource( 1 )]
-lifetime = 3.0
+visible = false
 script = ExtResource( 2 )
+
+[connection signal="area_entered" from="." to="ObstacleExplosion" method="_on_Obstacle_area_entered"]
