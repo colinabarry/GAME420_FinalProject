@@ -23,7 +23,7 @@ shader_param/uv_curve_div = 2.35
 [sub_resource type="Animation" id=37]
 length = 0.001
 tracks/0/type = "value"
-tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
+tracks/0/path = NodePath(".:material:shader_param/g_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "values": [ 1.25 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
+tracks/1/path = NodePath(".:material:shader_param/b_offset")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -52,25 +52,25 @@ resource_name = "player_hit"
 length = 0.3
 step = 0.01
 tracks/0/type = "value"
-tracks/0/path = NodePath("CRTShaderRect:material:shader_param/g_offset")
-tracks/0/interp = 2
+tracks/0/path = NodePath(".:material:shader_param/g_offset")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.22 ),
+"times": PoolRealArray( 0, 0.06, 0.22 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.25, 8.0, 1.25 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CRTShaderRect:material:shader_param/b_offset")
-tracks/1/interp = 2
+tracks/1/path = NodePath(".:material:shader_param/b_offset")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.06, 0.22 ),
+"times": PoolRealArray( 0, 0.07, 0.22 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 1.25, 8.0, 1.25 ]
@@ -85,6 +85,5 @@ expand = true
 script = ExtResource( 3 )
 
 [node name="CRTAnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("")
 anims/RESET = SubResource( 37 )
 anims/player_hit = SubResource( 38 )
