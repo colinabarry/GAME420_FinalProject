@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://scenes/levels/World.gd" type="Script" id=1]
 [ext_resource path="res://assets/TileSet Template.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/levels/PauseController.gd" type="Script" id=11]
 [ext_resource path="res://assets/floor.png" type="Texture" id=12]
 [ext_resource path="res://assets/sound/music/2020-10-26_-_Ghost_Stories_-_www.FesliyanStudios.com_Steve_Oxen.mp3" type="AudioStream" id=13]
+[ext_resource path="res://assets/sound/sfx/pause.wav" type="AudioStream" id=14]
 
 [sub_resource type="Animation" id=56]
 resource_name = "pause"
@@ -737,6 +738,10 @@ script = ExtResource( 11 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PauseController"]
 anims/pause = SubResource( 56 )
+
+[node name="PauseSound" type="AudioStreamPlayer" parent="PauseController"]
+stream = ExtResource( 14 )
+volume_db = -14.976
 
 [node name="WorldShaders" type="CanvasLayer" parent="."]
 layer = 6

@@ -5,6 +5,7 @@ export var can_toggle_pause := true
 
 func _input(event) -> void:
 	if event.is_action_pressed("ui_cancel"):
+		$PauseSound.play()
 		if get_tree().paused:
 			resume()
 		else:

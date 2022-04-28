@@ -211,7 +211,10 @@ visible = false
 [node name="Sprite" parent="." index="1"]
 visible = true
 rotation = 1.57079
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
+
+[node name="CharacterCollision" parent="." index="2"]
+disabled = true
 
 [node name="AnimationPlayer" parent="." index="4"]
 anims/die = SubResource( 3 )
@@ -225,6 +228,7 @@ one_shot = true
 
 [node name="AttackHitDetection" type="CollisionShape2D" parent="AttackDetection" index="0"]
 shape = SubResource( 1 )
+disabled = true
 
 [node name="HealthBarContainer" type="Node2D" parent="." index="7"]
 script = ExtResource( 7 )
@@ -240,6 +244,7 @@ max_health = 40
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="." index="8"]
 stream = ExtResource( 9 )
+volume_db = -6.118
 max_distance = 200.0
 attenuation = 3.605
 

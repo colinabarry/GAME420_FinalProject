@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/wind_up.wav-e2aa07f0ba0e86d0f40e441a9dbcd4b7.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/wind_up.wav"
+dest_files=[ "res://.import/wind_up.wav-e2aa07f0ba0e86d0f40e441a9dbcd4b7.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
