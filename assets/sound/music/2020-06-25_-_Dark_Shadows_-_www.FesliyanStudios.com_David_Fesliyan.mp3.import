@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3-0a91a2234eda740dbd3843f5825c0d45.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3"
+dest_files=[ "res://.import/2020-06-25_-_Dark_Shadows_-_www.FesliyanStudios.com_David_Fesliyan.mp3-0a91a2234eda740dbd3843f5825c0d45.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

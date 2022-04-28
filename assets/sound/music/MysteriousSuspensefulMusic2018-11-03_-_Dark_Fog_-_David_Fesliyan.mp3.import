@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3-1a0d5ebefb136dc470c73aeb9f1b3f93.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3"
+dest_files=[ "res://.import/MysteriousSuspensefulMusic2018-11-03_-_Dark_Fog_-_David_Fesliyan.mp3-1a0d5ebefb136dc470c73aeb9f1b3f93.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2019-02-25_-_Poisonous_-_David_Fesliyan.mp3-a27341015a096ccb750e6e95806c4c96.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2019-02-25_-_Poisonous_-_David_Fesliyan.mp3"
+dest_files=[ "res://.import/2019-02-25_-_Poisonous_-_David_Fesliyan.mp3-a27341015a096ccb750e6e95806c4c96.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

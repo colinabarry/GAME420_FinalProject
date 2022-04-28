@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2019-03-17_-_Too_Crazy_-_David_Fesliyan.mp3-f08d4b487fdf1c7e1dcae3527a0ebdf8.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2019-03-17_-_Too_Crazy_-_David_Fesliyan.mp3"
+dest_files=[ "res://.import/2019-03-17_-_Too_Crazy_-_David_Fesliyan.mp3-f08d4b487fdf1c7e1dcae3527a0ebdf8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

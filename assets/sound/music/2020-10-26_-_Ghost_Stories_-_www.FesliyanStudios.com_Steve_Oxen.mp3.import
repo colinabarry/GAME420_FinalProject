@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2020-10-26_-_Ghost_Stories_-_www.FesliyanStudios.com_Steve_Oxen.mp3-74c0f5add5688655a52d2ef94c3a5e86.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2020-10-26_-_Ghost_Stories_-_www.FesliyanStudios.com_Steve_Oxen.mp3"
+dest_files=[ "res://.import/2020-10-26_-_Ghost_Stories_-_www.FesliyanStudios.com_Steve_Oxen.mp3-74c0f5add5688655a52d2ef94c3a5e86.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
