@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2017-06-16_-_The_Dark_Castle_-_David_Fesliyan.mp3-b0b83e13448ce10c033ee3f6f3bef5eb.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2017-06-16_-_The_Dark_Castle_-_David_Fesliyan.mp3"
+dest_files=[ "res://.import/2017-06-16_-_The_Dark_Castle_-_David_Fesliyan.mp3-b0b83e13448ce10c033ee3f6f3bef5eb.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

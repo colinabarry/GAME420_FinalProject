@@ -13,6 +13,8 @@ var player: KinematicBody2D
 
 onready var tile_map: = get_tree().current_scene.get_node("Navigation2D/TileMap")
 onready var enemy_manager := $"/root/EnemyManager"
+onready var transition_player := $TransitionPlayer
+onready var canvas_modulate := $CanvasModulate
 
 
 func _ready() -> void:
@@ -20,6 +22,7 @@ func _ready() -> void:
 	generate_level()
 	enemy_manager.reload_scene()
 	enemy_manager.spawn_enemies()
+	transition_player.play("transition")
 
 
 func generate_level() -> void:

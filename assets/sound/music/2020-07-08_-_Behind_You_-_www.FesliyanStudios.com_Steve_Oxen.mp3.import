@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/2020-07-08_-_Behind_You_-_www.FesliyanStudios.com_Steve_Oxen.mp3-505b68deac951beacaa5e2f09fe071b2.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/2020-07-08_-_Behind_You_-_www.FesliyanStudios.com_Steve_Oxen.mp3"
+dest_files=[ "res://.import/2020-07-08_-_Behind_You_-_www.FesliyanStudios.com_Steve_Oxen.mp3-505b68deac951beacaa5e2f09fe071b2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

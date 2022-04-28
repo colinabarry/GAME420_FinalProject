@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/menus/MenuButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/menus/main.png" type="Texture" id=2]
 [ext_resource path="res://scenes/levels/GeneratedRooms.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ScanLineShaderLayer.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/sound/music/2019-03-17_-_Too_Crazy_-_David_Fesliyan.mp3" type="AudioStream" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -24,3 +25,7 @@ margin_bottom = 152.0
 is_quit_button = true
 
 [node name="CRTShaderRect" parent="." instance=ExtResource( 4 )]
+
+[node name="BackgoundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+autoplay = true

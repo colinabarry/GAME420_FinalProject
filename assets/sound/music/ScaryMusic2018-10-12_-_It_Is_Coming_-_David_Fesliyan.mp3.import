@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ScaryMusic2018-10-12_-_It_Is_Coming_-_David_Fesliyan.mp3-5af182be80a580fd936c2e420fddc562.mp3str"
+
+[deps]
+
+source_file="res://assets/sound/music/ScaryMusic2018-10-12_-_It_Is_Coming_-_David_Fesliyan.mp3"
+dest_files=[ "res://.import/ScaryMusic2018-10-12_-_It_Is_Coming_-_David_Fesliyan.mp3-5af182be80a580fd936c2e420fddc562.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/heavyAttack.wav-fd531ef4e6fdf1100dc9d1fa3a885723.sample"
+
+[deps]
+
+source_file="res://assets/sound/sfx/heavyAttack.wav"
+dest_files=[ "res://.import/heavyAttack.wav-fd531ef4e6fdf1100dc9d1fa3a885723.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
